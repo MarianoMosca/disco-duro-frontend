@@ -1,11 +1,10 @@
 import "./App.css";
-
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
 function App() {
   return (
-    <div className="App">
-      <header>
-        <h1>DISCO DURO ONLINE</h1>
-      </header>
+    <main className="App">
+      <Header />
       <nav>
         Nav para buscar archivos o carpetas por ejemplo, aunque viendo el modelo
         de Google Drive aqui tiene un form donde directamente buscas el archivo
@@ -17,8 +16,8 @@ function App() {
           secciones una para cada.
         </p>
       </section>
-      <footer>Hack a Boss@</footer>
-    </div>
+      <Footer />
+    </main>
   );
 }
 
