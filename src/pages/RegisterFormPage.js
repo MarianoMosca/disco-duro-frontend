@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export const RegisterFormPage = () => {
   const [email, setEmail] = useState("");
@@ -10,25 +10,27 @@ export const RegisterFormPage = () => {
       email: email,
       password: password,
     };
-    const res = await fetch(process.env.REAC_API_BACKEND_USERS, {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (res.ok) {
-      const bodyRes = await res.json();
-    }
+    console.log(body);
   };
+
   return (
-    <form>
-      <h1>Register</h1>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" value={email} />
-      </div>
+    <form onSubmit={register}>
+      <h2>Register</h2>
+      <label htmlFor="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <input type="submit" value="Send"></input>
     </form>
   );
 };
