@@ -1,26 +1,65 @@
 import "./App.css";
+/* import { Files } from "./components/Files";
+import { Folders } from "./components/Folders";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
-import { RegisterFormPage } from "./pages/RegisterFormPage";
+import { RegisterFormPage } from "./pages/RegisterFormPage"; */
+
+import { Link, Outlet } from "react-router-dom";
+
 function App() {
   return (
-    <main className="App">
-      <Header />
-      <RegisterFormPage />
+    <div>
       <nav>
-        Nav para buscar archivos o carpetas por ejemplo, aunque viendo el modelo
-        de Google Drive aqui tiene un form donde directamente buscas el archivo
-        o carpeta!
+        <ul>
+          <li>
+            <Link to="/">Inicio</Link>
+          </li>
+
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
       </nav>
+      <Outlet />
+    </div>
+  );
+}
+
+/* function App() {
+  return (
+    <main>
+      <Header />
+      
       <section>
-        <p>
-          Podemos crear una seccion para los archivos y carpetas, o separar dos
-          secciones una para cada.
-        </p>
+        <h3>Carpetas</h3>
+        <Folders />
+        <h3>Archivos</h3>
+        <Files />
+      </section>
+      <section>
+        <menu>
+          <ul>
+            <li>Crear Carpeta</li>
+          </ul>
+          <ul>
+            <li>Subir archivo</li>
+          </ul>
+        </menu>
+      </section>
+      <section>
+        <menu>
+          <ul>
+            <li>Informacion del Archivo seleccionado</li>
+          </ul>
+          <ul>
+            <li>Opciones de archivo</li>
+          </ul>
+        </menu>
       </section>
       <Footer />
     </main>
   );
-}
+} */
 
 export default App;
