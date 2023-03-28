@@ -6,23 +6,27 @@ import { Header } from "./components/Header";
 import { RegisterFormPage } from "./pages/RegisterFormPage"; */
 
 import { Link, Outlet } from "react-router-dom";
+import { Header } from "./components/Header";
 
 function App() {
   return (
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Inicio</Link>
-          </li>
+    <main>
+      <Header />
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Registro</Link>
+            </li>
 
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
-      </nav>
-      <Outlet />
-    </div>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ul>
+        </nav>
+        <Outlet />
+      </div>
+    </main>
   );
 }
 
