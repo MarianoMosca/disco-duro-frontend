@@ -13,7 +13,22 @@ export const loginUserServise = async ({ email, password }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+
   return json.data;
+};
+
+export const sendFileSerive = async ({ file }) => {
+  let data = new FormData();
+
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/files`, {
+    method: "POST",
+    body: data,
+  });
+  if (!response.ok) {
+    throw new Error(data.message);
+  }
+  console.log(file);
+  return file;
 };
 
 /* export const getMyUserDataService = async ({ token }) => {
