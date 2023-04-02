@@ -22,5 +22,8 @@ export const useFiles = () => {
 
     loadFiles();
   }, []);
-  return { files, loading, error };
+  const removeFile = (id) => {
+    setFiles(files.filter((file) => file.id !== id));
+  };
+  return { files, loading, error, removeFile };
 };

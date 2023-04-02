@@ -1,12 +1,12 @@
 import { File } from "./File";
 
-export const FileList = ({ files }) => {
+export const FileList = ({ files, removeFile }) => {
   return files.length ? (
     <ul className="fileList">
       {files.map((file) => {
         return (
           <li key={file.id}>
-            <File file={file} />
+            <File file={file} removeFile={removeFile} />
           </li>
         );
       })}

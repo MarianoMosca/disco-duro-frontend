@@ -5,7 +5,7 @@ import { FileList } from "../components/FileList";
 import { Loading } from "../components/Loading";
 import { useFiles } from "../hooks/useFiles";
 export const HomePage = () => {
-  const { files, loading, error } = useFiles();
+  const { files, loading, error, removeFile } = useFiles();
   if (loading) return <Loading />;
   if (error) return <ErrorMessage message={error} />;
   console.log(files);
@@ -13,7 +13,7 @@ export const HomePage = () => {
     <>
       <h1 className="listaFicheros">Lista de ficheros </h1>
 
-      <FileList files={files} />
+      <FileList files={files} removeFile={removeFile} />
       <div>
         <MdFilePresent
           style={{
