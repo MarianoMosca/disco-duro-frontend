@@ -17,9 +17,10 @@ export const loginUserService = async ({ email, password }) => {
   return json.data.token;
 };
 
-export const newFileService = async ({ file, token }) => {
+export const newFileService = async ({ data, token }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/files`, {
     method: "POST",
+    body: data,
     headers: {
       Authorization: token,
     },
@@ -30,7 +31,8 @@ export const newFileService = async ({ file, token }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-  return file;
+  console.log(data);
+  return data;
 };
 
 export const getUserDataService = async ({ token }) => {

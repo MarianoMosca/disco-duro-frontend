@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { loginUserService } from "../services";
+import { useNavigate } from "react-router-dom";
 
 export const LoginFormPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, SetError] = useState("");
   const [, , login] = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -14,6 +16,7 @@ export const LoginFormPage = () => {
     try {
       const data = await loginUserService({ email, password });
       login(data);
+      navigate("/homepage");
       console.log(data);
     } catch (error) {
       SetError(error.message);

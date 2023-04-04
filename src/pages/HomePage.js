@@ -1,5 +1,8 @@
-import { Files } from "../components/Files";
+import { useContext } from "react";
+import { NewFiles } from "../components/Files";
+import { AuthContext } from "../context/AuthProvider";
 
 export const HomePage = () => {
-  return <Files />;
+  const [, user] = useContext(AuthContext);
+  return <>{user ? <NewFiles /> : null}</>;
 };
