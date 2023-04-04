@@ -1,19 +1,20 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
-import { loginUserServise } from "../services";
+import { loginUserService } from "../services";
 
 export const LoginFormPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, SetError] = useState("");
-  const [, setToken] = useContext(AuthContext);
+  const [, , login] = useContext(AuthContext);
 
   const handleForm = async (e) => {
     e.preventDefault();
     SetError("");
     try {
-      const data = await loginUserServise({ email, password });
-      setToken(data);
+      const data = await loginUserService({ email, password });
+      login(data);
+      console.log(data);
     } catch (error) {
       SetError(error.message);
     }
@@ -40,7 +41,7 @@ export const LoginFormPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </fieldset>
-        <input type="submit" value="Send"></input>
+        <input type="submit" value="Login"></input>
         {error ? <p>{error}</p> : null}
       </form>
     </section>

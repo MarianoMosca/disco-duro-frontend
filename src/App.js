@@ -1,31 +1,12 @@
 import "./App.css";
-/* import { Files } from "./components/Files";
-import { Folders } from "./components/Folders";
-import { Footer } from "./components/Footer";
-import { Header } from "./components/Header";
-import { RegisterFormPage } from "./pages/RegisterFormPage"; */
 
-import { Link, Outlet } from "react-router-dom";
 import { Header } from "./components/Header";
-
+import { Auth } from "./components/Auth";
 function App() {
   return (
     <main>
       <Header />
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Registro</Link>
-            </li>
-
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          </ul>
-        </nav>
-        <Outlet />
-      </div>
+      <Auth />
     </main>
   );
 }

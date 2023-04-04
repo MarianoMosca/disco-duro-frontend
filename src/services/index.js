@@ -1,6 +1,6 @@
 // Conexión con el backend
 
-export const loginUserServise = async ({ email, password }) => {
+export const loginUserService = async ({ email, password }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/users/login`, {
     method: "POST",
     headers: {
@@ -14,24 +14,26 @@ export const loginUserServise = async ({ email, password }) => {
     throw new Error(json.message);
   }
 
-  return json.data;
+  return json.data.token;
 };
 
-export const sendFileSerive = async ({ file }) => {
-  let data = new FormData();
-
+export const newFileService = async ({ file, token }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/files`, {
     method: "POST",
-    body: data,
+    headers: {
+      Authorization: token,
+    },
   });
+
+  const json = await response.json();
+
   if (!response.ok) {
-    throw new Error(data.message);
+    throw new Error(json.message);
   }
-  console.log(file);
   return file;
 };
 
-/* export const getMyUserDataService = async ({ token }) => {
+export const getUserDataService = async ({ token }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
     headers: {
       Authorization: token,
@@ -45,4 +47,3 @@ export const sendFileSerive = async ({ file }) => {
 
   return json.user;
 };
- */

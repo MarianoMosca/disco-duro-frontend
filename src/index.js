@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { LoginFormPage } from "./pages/LoginFormPage";
 import { RegisterFormPage } from "./pages/RegisterFormPage";
-import { UserProfile } from "./pages/UserProfile";
+import { UserProfilePage } from "./pages/UserProfilePage";
 import { AuthProvider } from "./context/AuthProvider";
 
 const router = createBrowserRouter([
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <UserProfile />,
+        element: <UserProfilePage />,
       },
     ],
   },
