@@ -1,3 +1,4 @@
+// Token guardado en el localStorage
 import { useEffect, useState } from "react";
 
 export const useLocalStorage = (clave, valorInicial) => {
