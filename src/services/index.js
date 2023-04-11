@@ -124,7 +124,23 @@ export const getUserDataService = async (id) => {
 
   return json.data;
 };
+export const downloadFileService = async ({ token, id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/download/${id}`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  const blob = await response.blob();
 
+  if (!response.ok) {
+    throw new Error("Error al descargar el fichero");
+  }
+
+  return blob;
+};
 export const deleteFileService = async ({ id, token }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/files/${id}`, {
     method: "DELETE",

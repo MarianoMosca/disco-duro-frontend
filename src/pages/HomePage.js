@@ -16,7 +16,7 @@ import { RefreshFolder } from "../components/RefreshFolder";
 
 export const HomePage = () => {
   // const { id } = useParams();
-  const { files, loading, error, removeFile } = useFiles(); //probar id con useParams
+  const { files, loading, error, addFile, removeFile } = useFiles(); //probar id con useParams
   //console.log(files, loading, error);
   const { user } = useContext(AuthContext);
   if (loading) return <Loading />;
@@ -25,7 +25,7 @@ export const HomePage = () => {
   //console.log(files); //no carga nada
   return (
     <>
-      {user ? <NewFile /> : null}
+      {user ? <NewFile addFile={addFile} /> : null}
 
       <h1 className="listaFicheros">Mis ficheros </h1>
       <Refresh />

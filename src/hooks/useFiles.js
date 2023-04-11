@@ -30,7 +30,7 @@ const useFiles = (id) => {
   };
 
   const removeFile = (id) => {
-    setFiles(files.filter((file) => file.idUser !== id));
+    setFiles(files.filter((file) => file.id !== id));
   };
 
   return { files, loading, error, addFile, removeFile };
