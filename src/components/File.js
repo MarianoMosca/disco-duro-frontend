@@ -2,9 +2,11 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { deleteFileService } from "../services";
 import { useNavigate } from "react-router-dom";
+import { MdFilePresent } from "react-icons/md";
 
 export const File = ({ file, removeFile }) => {
-  const { token, user } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
+
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -24,13 +26,21 @@ export const File = ({ file, removeFile }) => {
 
   return (
     <article className="file">
-      <p>{file.name} Habrá que cambiar el nombre en la base de datos</p>
-      <p>Estudiar una vista previa del archivo</p>
       <p>
-        Propiedad de {file.email} subido el{" "}
-        {new Date(file.created.at).toLocaleString()};
+        Nombre del archivo:{file.name}. Habrá que cambiar el nombre en la base
+        de datos
       </p>
-      {user && user.id === file.user_id ? (
+      <p>Estudiar una vista previa del archivo</p>
+      <p>Subido el {new Date(file.createdAt).toISOString()}</p>
+      <MdFilePresent
+        style={{
+          width: 50,
+          height: 50,
+          color: "red",
+        }}
+      />
+
+      {user && user.id === file.idUser ? (
         <section>
           <button
             onClick={() => {
@@ -42,6 +52,20 @@ export const File = ({ file, removeFile }) => {
           {error ? <p>{error}</p> : null}
         </section>
       ) : null}
+
+      {/* {user && user.id === file.idUser ? (
+        <section>
+          <button
+            onClick={() => {
+              if (window.confirm("¿Estás seguro?")) downloadOneFile(file.id);
+            }}
+          >
+            Descargar fichero
+          </button>
+          {error ? <p>{error}</p> : null}
+          {/* //<p>Fichero descargado correctamente</p> */}
+      {/* </section>
+      ) : null} */}
     </article>
   );
 };

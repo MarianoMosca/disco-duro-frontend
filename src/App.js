@@ -6,11 +6,16 @@ import { Header } from "./components/Header";
 import { RegisterFormPage } from "./pages/RegisterFormPage"; */
 
 import { Link, Outlet } from "react-router-dom";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
-    <div>
+    <main>
+      <Header />
+
       <nav>
+        *{" "}
         <ul>
           <li>
             <Link to="/">Inicio</Link>
@@ -22,10 +27,14 @@ function App() {
           <li>
             <Link to="/homepage">Homepage</Link>
           </li>
+          <li>
+            <Link to="/user">Mis datos</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />
-    </div>
+      <Footer />
+    </main>
   );
 }
 

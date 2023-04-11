@@ -1,8 +1,13 @@
+import { Auth } from "./Auth";
+
 export const Header = () => {
   return (
     <header>
-      <h1>My web drive</h1>
-      <nav>Buscardor</nav>
+      <h1>Disco duro virtual</h1>
+
+      <nav>
+        <Auth />
+      </nav>
     </header>
   );
 };

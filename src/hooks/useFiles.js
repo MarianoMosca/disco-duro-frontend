@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getAllFilesService } from "../services";
+import { AuthContext } from "../context/AuthContext";
 
-export const useFiles = () => {
+const useFiles = (id) => {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { token } = useContext(AuthContext);
 
   useEffect(() => {
     const loadFiles = async () => {
       try {
         setLoading(true);
-        const data = await getAllFilesService();
-
+        const data = await getAllFilesService(token);
+        //console.log(data);
         setFiles(data);
       } catch (error) {
         setError(error.message);
@@ -21,9 +23,16 @@ export const useFiles = () => {
     };
 
     loadFiles();
-  }, []);
-  const removeFile = (id) => {
-    setFiles(files.filter((file) => file.id !== id));
+  }, [id, token]);
+
+  const addFile = (file) => {
+    setFiles([file, ...files]);
   };
-  return { files, loading, error, removeFile };
+
+  const removeFile = (id) => {
+    setFiles(files.filter((file) => file.idUser !== id));
+  };
+
+  return { files, loading, error, addFile, removeFile };
 };
+export default useFiles;

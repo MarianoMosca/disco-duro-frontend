@@ -1,8 +1,8 @@
 import { File } from "./File";
 
 export const FileList = ({ files, removeFile }) => {
-  return files.length ? (
-    <ul className="fileList">
+  return files?.length ? (
+    <ul className="filesList">
       {files.map((file) => {
         return (
           <li key={file.id}>
@@ -12,6 +12,6 @@ export const FileList = ({ files, removeFile }) => {
       })}
     </ul>
   ) : (
-    <p>No hay ficheros...</p>
+    <p>No hay ficheros disponibles. Hay que estar registrado.</p>
   );
 };
