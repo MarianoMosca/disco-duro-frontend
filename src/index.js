@@ -4,10 +4,12 @@ import "./index.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
-import { LoginFormPage } from "./pages/LoginFormPage";
 import { RegisterFormPage } from "./pages/RegisterFormPage";
-import { UserProfilePage } from "./pages/UserProfilePage";
-import { AuthProvider } from "./context/AuthProvider";
+
+import { NotFoundPage } from "./pages/NotFoundPage";
+import { LoginPage } from "./pages/LoginPage";
+import { AuthContextProviderComponent } from "./context/AuthContext";
+import { UserPage } from "./pages/UserPage";
 
 const router = createBrowserRouter([
   {
@@ -20,15 +22,19 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <LoginFormPage />,
+        element: <LoginPage />,
       },
       {
         path: "homepage",
         element: <HomePage />,
       },
       {
-        path: "profile",
-        element: <UserProfilePage />,
+        path: "user",
+        element: <UserPage />,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
       },
     ],
   },
@@ -37,8 +43,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthProvider>
+    <AuthContextProviderComponent>
       <RouterProvider router={router} />
-    </AuthProvider>
+    </AuthContextProviderComponent>
   </React.StrictMode>
 );

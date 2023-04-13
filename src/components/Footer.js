@@ -1,3 +1,3 @@
 export const Footer = () => {
-  return <footer>(c) Hack a Boss 2023</footer>;
+  return <footer className="footer">(c) Juanpe, Mariano, Juan</footer>;
 };
