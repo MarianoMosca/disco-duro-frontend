@@ -4,19 +4,23 @@ import { updateAvatarService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 import { useUser } from "../hooks/useUser";
 
-export const EditUserAvatar = ({ handleAvatarUpload }) => {
+export const EditUserAvatar = ({ handleAvatarUpload, setUser }) => {
   const { token } = useContext(AuthContext);
-  const [userAvatar, setUserAvatar] = useState([]);
+  const [userAvatar, setUserAvatar] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
+  const { user } = useUser();
   const handleForm = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
-      const data = new FormData(e.target);
-      const avatar = await updateAvatarService(data, token);
-      handleAvatarUpload(avatar); // llama la función handleAvatarUpload y pasa la nueva URL del avatar
+      const formData = new FormData();
+      formData.append("avatar", userAvatar);
+      const avatar = await updateAvatarService(formData, token);
+
+      handleAvatarUpload(avatar.url);
+      setUser({ ...user, avatar: avatar.url });
+      // llama la función handleAvatarUpload y pasa la nueva URL del avatar
     } catch (error) {
       setError(error.message);
     } finally {
@@ -40,7 +44,7 @@ export const EditUserAvatar = ({ handleAvatarUpload }) => {
         <button>Subir Avatar</button>
 
         {error ? <p>{error}</p> : null}
-        {loading ? <p>Cargando fichero...</p> : null}
+        {loading ? <p>Cargando</p> : null}
       </form>
     </>
   );

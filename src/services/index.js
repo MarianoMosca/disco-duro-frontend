@@ -59,7 +59,7 @@ export const loginUserService = async ({ email, password }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-
+  console.log(json.data.token);
   return json.data.token;
 };
 
@@ -163,14 +163,14 @@ export const updateAvatarService = async (formData, token) => {
   }
 };
 
-export const updateUser = async (token, newUserName) => {
+export const updateMyDataService = async (userData, token) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: token,
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ newUserName }),
+    body: JSON.stringify({ userData }),
   });
   if (response.ok) {
     const user = await response.json();

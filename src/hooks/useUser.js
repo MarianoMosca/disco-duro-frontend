@@ -23,5 +23,5 @@ export const useUser = () => {
     };
     loadUser();
   }, [token]);
-  return { user, loading, error };
+  return { user, loading, error, setUser };
 };
