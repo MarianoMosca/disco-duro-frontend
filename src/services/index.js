@@ -96,10 +96,9 @@ export const sendFileService = async ({ data, token }) => {
 
   return json.data;
 };
-export const sendFolderService = async ({ data, token }) => {
-  const response = await fetch(`${process.env.REACT_APP_BACKEND}/folders`, {
-    method: "POST",
-    body: data,
+
+export const getUserDataService = async (id, token) => {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
     headers: {
       Authorization: token,
     },
@@ -107,17 +106,6 @@ export const sendFolderService = async ({ data, token }) => {
 
   const json = await response.json();
   console.log(json);
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
-
-  return json.data;
-};
-export const getUserDataService = async (id) => {
-  const response = await fetch(`${process.env.REACT_APP_BACKEND}/users/${id}`);
-
-  const json = await response.json();
-
   if (!response.ok) {
     throw new Error(json.message);
   }
@@ -154,4 +142,139 @@ export const deleteFileService = async ({ id, token }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+};
+export const sendFolderService = async ({ data, token }) => {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/folders`, {
+    method: "POST",
+    body: data,
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+export const getAllFoldersService = async (token) => {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/folders`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  const json = await response.json();
+  //console.log(json);
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+export const sendFileInFolderService = async ({ data, token }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/folders/:idFolders`,
+    {
+      method: "POST",
+      body: data,
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+export const getFolderDataService = async (token, id) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/folders/${id}`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+// export const sendAvatarService = async ({ data, token }) => {
+//   const response = await fetch(
+//     `${process.env.REACT_APP_BACKEND}/users/avatar`,
+//     {
+//       method: "POST",
+//       body: data,
+//       headers: {
+//         Authorization: token,
+//       },
+//     }
+//   );
+
+//   const json = await response.json();
+
+//   if (!response.ok) {
+//     throw new Error(json.message);
+//   }
+
+//   return json.data;
+// };
+// export const sendAvatarService = async ({ avatar, token }) => {
+//   const formData = new FormData();
+//   formData.append("avatar", avatar);
+//   const response = await fetch(
+//     `${process.env.REACT_APP_BACKEND}/users/avatar`,
+//     {
+//       method: "PUT",
+
+//       headers: {
+//         Authorization: token,
+//       },
+//       body: formData,
+//     }
+//   );
+//   const json = await response.json();
+//   if (!response.ok) {
+//     throw new Error(json.message);
+//   }
+
+//   return json.data;
+// };
+export const sendAvatarService = async ({ data, token }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/users/avatar`,
+    {
+      method: "PUT",
+      body: JSON.stringify(data, token),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
 };

@@ -15,7 +15,6 @@ function App() {
       <Header />
 
       <nav>
-        *{" "}
         <ul>
           <li>
             <Link to="/">Inicio</Link>
@@ -25,10 +24,7 @@ function App() {
             <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to="/homepage">Homepage</Link>
-          </li>
-          <li>
-            <Link to="/user">Mis datos</Link>
+            <Link to="/homepage">Ficheros</Link>
           </li>
         </ul>
       </nav>

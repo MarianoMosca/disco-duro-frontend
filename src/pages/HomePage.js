@@ -9,14 +9,15 @@ import { AuthContext } from "../context/AuthContext";
 import { Refresh } from "../components/Refresh";
 
 import { RefreshFolder } from "../components/RefreshFolder";
-// import { NewFolder } from "../components/NewFolder";
-
-//import { useParams } from "react-router-dom";
-//import { File } from "../components/File";
+import { NewFolder } from "../components/NewFolder";
+import { FolderList } from "../components/FolderList";
+import useFolders from "../hooks/useFolders";
 
 export const HomePage = () => {
   // const { id } = useParams();
-  const { files, loading, error, addFile, removeFile } = useFiles(); //probar id con useParams
+  const { files, loading, error, addFile, removeFile } = useFiles();
+  const { folders, addFolder } = useFolders();
+  //probar id con useParams
   //console.log(files, loading, error);
   const { user } = useContext(AuthContext);
   if (loading) return <Loading />;
@@ -31,8 +32,12 @@ export const HomePage = () => {
       <Refresh />
 
       <FileList files={files} removeFile={removeFile} />
-      {/* <NewFolder /> */}
+
       <h1 className="listaCarpetas">Mis carpetas </h1>
+      {user ? <NewFolder addFolder={addFolder} /> : null}
+
+      <FolderList folders={folders} />
+
       <RefreshFolder />
     </>
   );

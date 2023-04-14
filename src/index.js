@@ -10,6 +10,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { LoginPage } from "./pages/LoginPage";
 import { AuthContextProviderComponent } from "./context/AuthContext";
 import { UserPage } from "./pages/UserPage";
+import { FolderPage } from "./pages/FolderPage";
 
 const router = createBrowserRouter([
   {
@@ -29,8 +30,13 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "user",
+        path: "user/:id",
         element: <UserPage />,
+      },
+
+      {
+        path: "folders/:id",
+        element: <FolderPage />,
       },
       {
         path: "*",

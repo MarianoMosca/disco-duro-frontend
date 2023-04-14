@@ -1,15 +1,15 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { sendFileService } from "../services";
-import { useNavigate } from "react-router-dom";
+import { sendFileInFolderService } from "../services";
+// import { useNavigate } from "react-router-dom";
 
-export const NewFile = (addFile) => {
+export const NewFileInFolder = (newFile) => {
   const { token } = useContext(AuthContext);
   const [, setFile] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [sendMessage, setSendMessage] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -17,15 +17,14 @@ export const NewFile = (addFile) => {
     try {
       setLoading(true);
       const data = new FormData(e.target);
-      const file = await sendFileService({ data, token });
-
-      console.log(e.target.file.files[0]);
+      const file = await sendFileInFolderService({ data, token });
       console.log(file);
+      console.log(e.target.file.files[0]);
+
       const fileName = e.target.file.files[0];
 
       console.log(fileName.name);
-      // addFile(file);
-
+      //newFile(file);
       setFile([]);
       setSendMessage("Archivo subido correctamente");
       setTimeout(() => {
@@ -33,7 +32,7 @@ export const NewFile = (addFile) => {
       }, 3000);
 
       e.target.reset();
-      navigate("/homepage");
+      // navigate("/homepage");
     } catch (error) {
       setError(error.message);
     } finally {
@@ -42,7 +41,6 @@ export const NewFile = (addFile) => {
   };
   return (
     <>
-      <h1>Añadir un fichero</h1>
       <form className="newfile" onSubmit={handleForm}>
         <fieldset>
           <label htmlFor="name">Nombre</label>
