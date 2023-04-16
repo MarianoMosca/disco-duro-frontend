@@ -25,8 +25,8 @@ const useFiles = (id) => {
     loadFiles();
   }, [id, token]);
 
-  const addFile = (data) => {
-    setFiles([data, ...files]);
+  const addFile = (file) => {
+    setFiles((prevFiles) => [file, ...prevFiles]);
   };
 
   const removeFile = (id) => {

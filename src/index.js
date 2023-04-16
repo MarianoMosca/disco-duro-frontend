@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "folders/:id",
+        path: "folders",
         element: <FolderPage />,
       },
       {

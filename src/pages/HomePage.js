@@ -6,9 +6,9 @@ import { Loading } from "../components/Loading";
 import useFiles from "../hooks/useFiles";
 import { NewFile } from "../components/NewFile";
 import { AuthContext } from "../context/AuthContext";
-import { Refresh } from "../components/Refresh";
+// import { Refresh } from "../components/Refresh";
 
-import { RefreshFolder } from "../components/RefreshFolder";
+// import { RefreshFolder } from "../components/RefreshFolder";
 import { NewFolder } from "../components/NewFolder";
 import { FolderList } from "../components/FolderList";
 import useFolders from "../hooks/useFolders";
@@ -29,7 +29,6 @@ export const HomePage = () => {
       {user ? <NewFile addFile={addFile} /> : null}
 
       <h1 className="listaFicheros">Mis ficheros </h1>
-      <Refresh />
 
       <FileList files={files} removeFile={removeFile} />
 
@@ -38,7 +37,7 @@ export const HomePage = () => {
 
       <FolderList folders={folders} />
 
-      <RefreshFolder />
+      {/* <RefreshFolder /> */}
     </>
   );
 };

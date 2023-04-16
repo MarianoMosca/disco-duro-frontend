@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { sendFileInFolderService } from "../services";
 // import { useNavigate } from "react-router-dom";
 
-export const NewFileInFolder = (newFile) => {
+export const NewFileInFolder = ({ addFile }) => {
   const { token } = useContext(AuthContext);
   const [, setFile] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ export const NewFileInFolder = (newFile) => {
       const fileName = e.target.file.files[0];
 
       console.log(fileName.name);
-      //newFile(file);
+      // addFile(file);
       setFile([]);
       setSendMessage("Archivo subido correctamente");
       setTimeout(() => {
@@ -32,6 +32,7 @@ export const NewFileInFolder = (newFile) => {
       }, 3000);
 
       e.target.reset();
+      window.location.reload();
       // navigate("/homepage");
     } catch (error) {
       setError(error.message);

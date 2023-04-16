@@ -97,21 +97,21 @@ export const sendFileService = async ({ data, token }) => {
   return json.data;
 };
 
-export const getUserDataService = async (id, token) => {
-  const response = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
-    headers: {
-      Authorization: token,
-    },
-  });
+// export const getUserDataService = async (id, token) => {
+//   const response = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
+//     headers: {
+//       Authorization: token,
+//     },
+//   });
 
-  const json = await response.json();
-  console.log(json);
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
+//   const json = await response.json();
+//   console.log(json);
+//   if (!response.ok) {
+//     throw new Error(json.message);
+//   }
 
-  return json.data;
-};
+//   return json.data;
+// };
 export const downloadFileService = async ({ token, id }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/download/${id}`,

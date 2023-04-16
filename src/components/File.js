@@ -52,7 +52,7 @@ export const File = ({ file, removeFile }) => {
         de datos
       </p>
       <p>Estudiar una vista previa del archivo</p>
-      <p>Subido el {new Date(file.createdAt).toISOString()}</p>
+      <p>Subido el {new Date(file.createdAt).toLocaleDateString()}</p>
       <MdFilePresent
         style={{
           width: 50,

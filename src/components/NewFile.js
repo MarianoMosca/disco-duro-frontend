@@ -1,15 +1,15 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { sendFileService } from "../services";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
-export const NewFile = (addFile) => {
+export const NewFile = ({ addFile }) => {
   const { token } = useContext(AuthContext);
   const [, setFile] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [sendMessage, setSendMessage] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -19,7 +19,6 @@ export const NewFile = (addFile) => {
       const data = new FormData(e.target);
       const file = await sendFileService({ data, token });
 
-      console.log(e.target.file.files[0]);
       console.log(file);
       const fileName = e.target.file.files[0];
 
@@ -33,7 +32,8 @@ export const NewFile = (addFile) => {
       }, 3000);
 
       e.target.reset();
-      navigate("/homepage");
+      window.location.reload();
+      // navigate("/homepage");
     } catch (error) {
       setError(error.message);
     } finally {

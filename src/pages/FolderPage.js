@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { Refresh } from "../components/Refresh";
+// import { Refresh } from "../components/Refresh";
 import { AuthContext } from "../context/AuthContext";
 import useFiles from "../hooks/useFiles";
 import { Loading } from "../components/Loading";
@@ -11,7 +11,7 @@ import useFolder from "../hooks/useFolder";
 import { useParams } from "react-router-dom";
 
 export const FolderPage = () => {
-  const { files, loading, error, removeFile } = useFiles();
+  const { files, loading, error, addFile, removeFile } = useFiles();
   const { id } = useParams();
   const { folder } = useFolder(id);
 
@@ -23,10 +23,10 @@ export const FolderPage = () => {
   return (
     <>
       <h1 className="carpeta">Carpeta:{folder.name}</h1>
-      {user ? <NewFileInFolder id={id} /> : null}
+      {user ? <NewFileInFolder id={id} addFile={addFile} /> : null}
 
       <h1 className="listaFicheros">Mis ficheros </h1>
-      <Refresh />
+      {/* <Refresh /> */}
       <FileListInFolder id={id} files={files} removeFile={removeFile} />
     </>
   );

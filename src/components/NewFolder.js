@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { sendFolderService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
-export const NewFolder = (addFolder) => {
+export const NewFolder = ({ addFolder }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { token } = useContext(AuthContext);

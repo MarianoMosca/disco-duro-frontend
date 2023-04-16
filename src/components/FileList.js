@@ -6,7 +6,7 @@ export const FileList = ({ files, removeFile }) => {
       {files.map((file) => {
         return (
           <li key={file.id}>
-            <File file={file} removeFile={removeFile} />
+            <File key={file.id} file={file} removeFile={removeFile} />
           </li>
         );
       })}
