@@ -15,7 +15,6 @@ function App() {
       <Header />
 
       <nav>
-        *{" "}
         <ul>
           <li>
             <Link to="/">Inicio</Link>

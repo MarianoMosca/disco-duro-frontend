@@ -16,9 +16,9 @@ import { RefreshFolder } from "../components/RefreshFolder";
 
 export const HomePage = () => {
   // const { id } = useParams();
+  const { user } = useContext(AuthContext);
   const { files, loading, error, removeFile } = useFiles(); //probar id con useParams
   //console.log(files, loading, error);
-  const { user } = useContext(AuthContext);
   if (loading) return <Loading />;
   if (error) return <ErrorMessage message={error} />;
 

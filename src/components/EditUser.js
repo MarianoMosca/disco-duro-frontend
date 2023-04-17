@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { updateMyDataService } from "../services";
 import { AuthContext } from "../context/AuthContext";
-import { useUser } from "../hooks/useUser";
 
 export const EditUser = ({ user }) => {
   const { token } = useContext(AuthContext);
@@ -19,13 +18,19 @@ export const EditUser = ({ user }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
+      <label htmlFor="name">
         Nuevo nombre de usuario:
         <input
           type="text"
+          name="name"
+          id="name"
           value={newUserName}
           onChange={(event) => setNewUserName(event.target.value)}
         />
+      </label>
+      <label htmlFor="email">
+        Nuevo email de usuario:
+        <input type="text" name="email" id="email" />
       </label>
       <button type="submit">Actualizar</button>
     </form>

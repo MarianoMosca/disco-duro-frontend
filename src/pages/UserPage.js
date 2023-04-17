@@ -3,25 +3,21 @@ import { EditUserAvatar } from "../components/EditUserAvatar";
 
 import { Profile } from "../components/Profile";
 import { EditUser } from "../components/EditUser";
-import { useUser } from "../hooks/useUser";
+
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 export const UserPage = () => {
-  const { user, setUser } = useUser();
+  const { user } = useContext(AuthContext);
 
-  const handleAvatarUpload = (url) => {
-    setUser({ ...user, avatar: url });
-  };
   console.log("user", user);
   return (
     <div>
-      <h2>Mi perfil</h2>
-      <Profile />
+      <h1>Mi perfil</h1>
+      <Profile user={user} />
       <EditUser />
       {user ? <Avatar user={user} /> : null}
-      <EditUserAvatar
-        handleAvatarUpload={handleAvatarUpload}
-        setUser={setUser}
-      />
+      <EditUserAvatar />
     </div>
   );
 };

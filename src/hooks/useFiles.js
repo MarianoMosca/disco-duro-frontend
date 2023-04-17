@@ -22,7 +22,7 @@ const useFiles = (id) => {
       }
     };
 
-    loadFiles();
+    if (token) loadFiles();
   }, [id, token]);
 
   const addFile = (file) => {

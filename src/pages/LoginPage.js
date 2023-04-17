@@ -14,9 +14,9 @@ export const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const token = await loginUserService({ email, password });
+      const data = await loginUserService({ email, password });
 
-      login(token);
+      login(data);
       navigate("/homepage");
     } catch (error) {
       setError(error.message);

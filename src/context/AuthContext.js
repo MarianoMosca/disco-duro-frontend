@@ -8,13 +8,13 @@ export const AuthContextProviderComponent = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    localStorage.setItem("token", token);
+    if (token) localStorage.setItem("token", token);
   }, [token]);
 
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const data = await getMyDataService(token);
+        const data = await getMyDataService({ token });
 
         setUser(data);
       } catch (error) {
@@ -34,8 +34,15 @@ export const AuthContextProviderComponent = ({ children }) => {
     setToken(token);
   };
 
+  const updateAvatar = (filename) => {
+    setUser({
+      ...user,
+      avatar: filename,
+    });
+  };
+
   return (
-    <AuthContext.Provider value={{ token, user, login, logout }}>
+    <AuthContext.Provider value={{ token, user, login, logout, updateAvatar }}>
       {children}
     </AuthContext.Provider>
   );

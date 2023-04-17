@@ -63,7 +63,7 @@ export const loginUserService = async ({ email, password }) => {
   return json.data.token;
 };
 
-export const getMyDataService = async (token) => {
+export const getMyDataService = async ({ token }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
     headers: {
       Authorization: token,
@@ -148,12 +148,12 @@ export const updateAvatarService = async (formData, token) => {
       {
         method: "PUT",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: token,
         },
         body: formData,
       }
     );
-    console.log(token);
+
     const data = await response.json();
     console.log(data);
     return data;
