@@ -14,6 +14,23 @@ export const getAllFilesService = async (token) => {
 
   return json.data;
 };
+
+export const getFolderFilesService = async (idFolder, token) => {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/files`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  const json = await response.json();
+  //console.log(json);
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
 // export const getUserFilesService = async (id, token) => {
 //   const response = await fetch(`${process.env.REACT_APP_BACKEND}/files/${id}`, {
 //     headers: {
@@ -177,7 +194,7 @@ export const getAllFoldersService = async (token) => {
 
   return json.data;
 };
-export const sendFileInFolderService = async ({ data, token }) => {
+export const sendFileInFolderService = async ({ id, data, token }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/folders/:idFolders`,
     {
@@ -257,24 +274,42 @@ export const getFolderDataService = async (token, id) => {
 
 //   return json.data;
 // };
-export const sendAvatarService = async ({ data, token }) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/users/avatar`,
-    {
-      method: "PUT",
-      body: JSON.stringify(data, token),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-    }
-  );
+export const updateAvatarService = async (formData, token) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND}/users/avatar`,
+      {
+        method: "PUT",
 
-  const json = await response.json();
+        headers: {
+          Authorization: token,
+        },
+        body: formData,
+      }
+    );
 
-  if (!response.ok) {
-    throw new Error(json.message);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error("error updating avatar:", error);
+    throw error;
   }
+};
 
-  return json.data;
+export const updateMyDataService = async (userData, token) => {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ userData }),
+  });
+  if (response.ok) {
+    const user = await response.json();
+    return user;
+  } else {
+    throw new Error("Error al actualizar el usuario");
+  }
 };

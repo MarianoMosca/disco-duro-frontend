@@ -1,0 +1,48 @@
+import React, { useContext, useState } from "react";
+import { updateAvatarService } from "../services";
+
+import { AuthContext } from "../context/AuthContext";
+
+export const EditUserAvatar = () => {
+  const [avatar, setAvatar] = useState();
+  const [result, setResult] = useState(null);
+  const { token, updateAvatar } = useContext(AuthContext);
+  // const [previewUrl, setPreviewUrl] = useState(null);
+  const handleChanged = (e) => {
+    setResult(null);
+    setAvatar(e.target.files[0]);
+    console.log(e.target.files[0]);
+    /* setPreviewUrl(URL.createObjetctURL(e.target.files[0])); */
+  };
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("avatar", avatar);
+
+      const response = await updateAvatarService(formData, token);
+      updateAvatar(response.filename);
+    } catch (error) {
+      alert(error.message);
+      //cambiar esto por algo que aparezca en pantalla
+    }
+  };
+  return (
+    <>
+      <h1>Avatar</h1>
+      <form className="avatar">
+        <fieldset>
+          <label htmlFor="file">Avatar</label>
+          <input type="file" name="avatar" onChange={handleChanged} />
+          {/*  {previewUrl && (
+            <div>
+              <img src={previewUrl} alt="preview" style={{ width: "100px " }} />
+            </div>
+          )} */}
+        </fieldset>
+        <button onClick={handleUpload}>Subir Avatar</button>
+        <div> {result && <p>{result.data}</p>}</div>
+      </form>
+    </>
+  );
+};

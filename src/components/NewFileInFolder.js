@@ -24,7 +24,7 @@ export const NewFileInFolder = ({ addFile }) => {
       const fileName = e.target.file.files[0];
 
       console.log(fileName.name);
-      // addFile(file);
+      addFile(file);
       setFile([]);
       setSendMessage("Archivo subido correctamente");
       setTimeout(() => {

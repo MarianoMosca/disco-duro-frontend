@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { getAllFilesService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
-const useFiles = (id) => {
+const useFiles = (idFolder) => {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -12,7 +12,9 @@ const useFiles = (id) => {
     const loadFiles = async () => {
       try {
         setLoading(true);
-        const data = await getAllFilesService(token);
+        const data = idFolder
+          ? console.log("ver readme del backend")
+          : await getAllFilesService(token);
         //console.log(data);
         setFiles(data);
       } catch (error) {
@@ -22,11 +24,11 @@ const useFiles = (id) => {
       }
     };
 
-    loadFiles();
-  }, [id, token]);
+    if (token) loadFiles();
+  }, [idFolder, token]);
 
   const addFile = (file) => {
-    setFiles((prevFiles) => [file, ...prevFiles]);
+    setFiles([file, ...files]);
   };
 
   const removeFile = (id) => {

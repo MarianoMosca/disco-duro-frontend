@@ -12,14 +12,15 @@ import { AuthContext } from "../context/AuthContext";
 import { NewFolder } from "../components/NewFolder";
 import { FolderList } from "../components/FolderList";
 import useFolders from "../hooks/useFolders";
+//import { Navigate } from "react-router-dom";
 
 export const HomePage = () => {
   // const { id } = useParams();
+  const { user } = useContext(AuthContext);
   const { files, loading, error, addFile, removeFile } = useFiles();
   const { folders, addFolder } = useFolders();
   //probar id con useParams
   //console.log(files, loading, error);
-  const { user } = useContext(AuthContext);
   if (loading) return <Loading />;
   if (error) return <ErrorMessage message={error} />;
 

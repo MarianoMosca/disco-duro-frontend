@@ -8,7 +8,7 @@ export const Auth = () => {
 
   return user ? (
     <section>
-      Conectado como <Link to={`/user/${user.id}`}>{user.name}</Link>{" "}
+      Conectado como <Link to="/user">{user.name}</Link>
       <button onClick={() => logout()}> Salir</button>
     </section>
   ) : null;

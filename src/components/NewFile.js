@@ -3,9 +3,9 @@ import { AuthContext } from "../context/AuthContext";
 import { sendFileService } from "../services";
 // import { useNavigate } from "react-router-dom";
 
-export const NewFile = ({ addFile }) => {
+export const NewFile = ({ addFile, idFolder }) => {
   const { token } = useContext(AuthContext);
-  const [, setFile] = useState([]);
+  const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [sendMessage, setSendMessage] = useState("");
@@ -16,14 +16,18 @@ export const NewFile = ({ addFile }) => {
 
     try {
       setLoading(true);
-      const data = new FormData(e.target);
-      const file = await sendFileService({ data, token });
+      const data = new FormData();
 
-      console.log(file);
-      const fileName = e.target.file.files[0];
+      data.append("file", file);
+      data.append("originalName", file.name);
 
-      console.log(fileName.name);
-      // addFile(file);
+      if (idFolder) {
+        data.append("idFolder", idFolder);
+      }
+
+      const fileInfo = await sendFileService({ data, token });
+
+      addFile(fileInfo);
 
       setFile([]);
       setSendMessage("Archivo subido correctamente");
@@ -32,7 +36,7 @@ export const NewFile = ({ addFile }) => {
       }, 3000);
 
       e.target.reset();
-      window.location.reload();
+      // window.location.reload();
       // navigate("/homepage");
     } catch (error) {
       setError(error.message);

@@ -8,7 +8,7 @@ export const AuthContextProviderComponent = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    localStorage.setItem("token", token);
+    if (token) localStorage.setItem("token", token);
   }, [token]);
 
   useEffect(() => {
@@ -34,8 +34,15 @@ export const AuthContextProviderComponent = ({ children }) => {
     setToken(token);
   };
 
+  const updateAvatar = (filename) => {
+    setUser({
+      ...user,
+      avatar: filename,
+    });
+  };
+
   return (
-    <AuthContext.Provider value={{ token, user, login, logout }}>
+    <AuthContext.Provider value={{ token, user, login, logout, updateAvatar }}>
       {children}
     </AuthContext.Provider>
   );

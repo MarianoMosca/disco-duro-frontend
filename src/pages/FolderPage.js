@@ -11,7 +11,8 @@ import useFolder from "../hooks/useFolder";
 import { useParams } from "react-router-dom";
 
 export const FolderPage = () => {
-  const { files, loading, error, addFile, removeFile } = useFiles();
+  const { idFolder } = useParams();
+  const { files, loading, error, addFile, removeFile } = useFiles(idFolder);
   const { id } = useParams();
   const { folder } = useFolder(id);
 

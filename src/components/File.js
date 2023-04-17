@@ -48,11 +48,11 @@ export const File = ({ file, removeFile }) => {
   return (
     <article className="file">
       <p>
-        Nombre del archivo:{file.name}. Habrá que cambiar el nombre en la base
-        de datos
+        Nombre del archivo:{file.originalName}. Habrá que cambiar el nombre en
+        la base de datos
       </p>
       <p>Estudiar una vista previa del archivo</p>
-      <p>Subido el {new Date(file.createdAt).toLocaleDateString()}</p>
+      <p>Subido el {new Date(file.createdAt).toISOString()}</p>
       <MdFilePresent
         style={{
           width: 50,

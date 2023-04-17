@@ -1,14 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { loginUserService } from "../services";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
+  const { token, login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (token) navigate("/homepage");
+  }, [token, navigate]);
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -17,7 +21,6 @@ export const LoginPage = () => {
       const token = await loginUserService({ email, password });
 
       login(token);
-      navigate("/homepage");
     } catch (error) {
       setError(error.message);
     }
