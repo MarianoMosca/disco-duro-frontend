@@ -7,7 +7,7 @@ export const FolderList = ({ folders }) => {
       {folders.map((folder) => {
         return (
           <li key={folder.id}>
-            <Folder folder={folder} />
+            <Folder key={folder.id} folder={folder} />
 
             <Link to={`/folders/${folder.id}`}>
               <button>operaciones con ficheros</button>

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { getFolderDataService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
-const useFolder = (id) => {
+const useFolder = (idFolder) => {
   const [folder, setFolder] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -12,8 +12,8 @@ const useFolder = (id) => {
     const loadFileInFolder = async () => {
       try {
         setLoading(true);
-        const data = await getFolderDataService(token, id);
-        console.log(data);
+        const data = await getFolderDataService(token);
+
         setFolder(data);
       } catch (error) {
         setError(error.message);
@@ -23,7 +23,7 @@ const useFolder = (id) => {
     };
 
     loadFileInFolder();
-  }, [id, token]);
+  }, [token]);
 
   return { folder, error, loading };
 };

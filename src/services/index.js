@@ -214,15 +214,12 @@ export const sendFileInFolderService = async ({ id, data, token }) => {
 
   return json.data;
 };
-export const getFolderDataService = async (token, id) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/folders/${id}`,
-    {
-      headers: {
-        Authorization: token,
-      },
-    }
-  );
+export const getFolderDataService = async (token) => {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/folders`, {
+    headers: {
+      Authorization: token,
+    },
+  });
 
   const json = await response.json();
 

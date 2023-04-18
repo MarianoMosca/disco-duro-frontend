@@ -11,8 +11,6 @@ export const EditUserAvatar = () => {
   const handleChanged = (e) => {
     setResult(null);
     setAvatar(e.target.files[0]);
-    console.log(e.target.files[0]);
-    /* setPreviewUrl(URL.createObjetctURL(e.target.files[0])); */
   };
   const handleUpload = async (e) => {
     e.preventDefault();

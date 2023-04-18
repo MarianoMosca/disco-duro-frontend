@@ -29,10 +29,6 @@ const useFolders = (id) => {
     setFolders([data, ...folders]);
   };
 
-  //   const removeFile = (id) => {
-  //     setFiles(files.filter((file) => file.id !== id));
-  //   };
-
   return { folders, loading, error, addFolder };
 };
 export default useFolders;
