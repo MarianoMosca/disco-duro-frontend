@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { MdFilePresent } from "react-icons/md";
 import { deleteFileService, downloadFileService } from "../services";
 import { useNavigate } from "react-router-dom";
-import { MdFilePresent } from "react-icons/md";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-export const File = ({ file, removeFile }) => {
+export const FileInFolder = ({ file, removeFile }) => {
   const { user, token } = useContext(AuthContext);
   const [isDownloaded, setIsDownloaded] = useState(false);
 
@@ -47,7 +47,7 @@ export const File = ({ file, removeFile }) => {
 
   return (
     <article className="file">
-      <p>Nombre del archivo: {file.originalName}.</p>
+      <p>Nombre del archivo:{file.originalName}.</p>
 
       <p>Subido el {new Date(file.createdAt).toISOString()}</p>
       <MdFilePresent
@@ -57,7 +57,6 @@ export const File = ({ file, removeFile }) => {
           color: "red",
         }}
       />
-
       {user && user.id === file.idUser ? (
         <section>
           <button

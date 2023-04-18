@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { RegisterFormPage } from "./pages/RegisterFormPage";
 
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { LoginPage } from "./pages/LoginPage";
-import { AuthContextProviderComponent } from "./context/AuthContext";
+import {
+  AuthContext,
+  AuthContextProviderComponent,
+} from "./context/AuthContext";
 import { UserPage } from "./pages/UserPage";
+import { FolderPage } from "./pages/FolderPage";
+
+const PrivateRoute = ({ children }) => {
+  const { token } = useContext(AuthContext);
+
+  if (!token) return <Navigate to="/login" />;
+
+  return children;
+};
 
 const router = createBrowserRouter([
   {
@@ -26,11 +42,20 @@ const router = createBrowserRouter([
       },
       {
         path: "homepage",
-        element: <HomePage />,
+        element: (
+          <PrivateRoute>
+            <HomePage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "user",
         element: <UserPage />,
+      },
+
+      {
+        path: "folders/:idFolder",
+        element: <FolderPage />,
       },
       {
         path: "*",

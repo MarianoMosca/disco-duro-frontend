@@ -1,27 +1,31 @@
 import { useContext, useEffect, useState } from "react";
-import { getMyDataService } from "../services";
+import { getFolderDataService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
-export const useUser = () => {
-  const [user, setUser] = useState(null);
+const useFolder = (idFolder) => {
+  const [folder, setFolder] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { token } = useContext(AuthContext);
 
   useEffect(() => {
-    setLoading(true);
-    const loadUser = async () => {
+    const loadFileInFolder = async () => {
       try {
-        const data = await getMyDataService(token);
+        setLoading(true);
+        const data = await getFolderDataService(token);
 
-        setUser(data);
+        setFolder(data);
       } catch (error) {
         setError(error.message);
       } finally {
         setLoading(false);
       }
     };
-    loadUser();
+
+    loadFileInFolder();
   }, [token]);
-  return { user, loading, error, setUser };
+
+  return { folder, error, loading };
 };
+
+export default useFolder;

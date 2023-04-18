@@ -1,12 +1,12 @@
-import { File } from "./File";
+import { FileInFolder } from "./FileInFolder";
 
-export const FileList = ({ files, removeFile }) => {
+export const FileListInFolder = ({ files, removeFile }) => {
   return files?.length ? (
     <ul className="filesList">
       {files.map((file) => {
         return (
           <li key={file.id}>
-            <File key={file.id} file={file} removeFile={removeFile} />
+            <FileInFolder file={file} removeFile={removeFile} />
           </li>
         );
       })}

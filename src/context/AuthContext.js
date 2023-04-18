@@ -14,7 +14,7 @@ export const AuthContextProviderComponent = ({ children }) => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const data = await getMyDataService({ token });
+        const data = await getMyDataService(token);
 
         setUser(data);
       } catch (error) {
@@ -40,9 +40,17 @@ export const AuthContextProviderComponent = ({ children }) => {
       avatar: filename,
     });
   };
+  const updateUser = ({ name, email }) => {
+    setUser({
+      name,
+      email,
+    });
+  };
 
   return (
-    <AuthContext.Provider value={{ token, user, login, logout, updateAvatar }}>
+    <AuthContext.Provider
+      value={{ token, user, login, logout, updateAvatar, updateUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
