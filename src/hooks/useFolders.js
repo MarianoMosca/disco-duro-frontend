@@ -14,7 +14,7 @@ const useFolders = (id) => {
         setLoading(true);
         const data = await getAllFoldersService(token);
         //console.log(data);
-        setFolders(data);
+        setFolders(data.folder);
       } catch (error) {
         setError(error.message);
       } finally {

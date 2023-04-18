@@ -21,12 +21,11 @@ export const NewFile = ({ addFile, idFolder }) => {
       data.append("file", file);
       data.append("originalName", file.name);
 
-      /* if (idFolder) {
+      if (idFolder) {
         data.append("idFolder", idFolder);
-      } */
+      }
 
       const fileInfo = await sendFileService({ data, token });
-
       addFile(fileInfo);
 
       setFile([]);
@@ -61,6 +60,16 @@ export const NewFile = ({ addFile, idFolder }) => {
             //accept={"file/*"}
             onChange={(e) => setFile(e.target.files[0])}
           />
+
+          {/* {file ? (
+            <figure>
+              <img
+                src={URL.createObjectURL(file)} //imagen previa del fichero
+                style={{ width: "100px" }}
+                alt="Preview"
+              />
+            </figure>
+          ) : null} */}
         </fieldset>
 
         <button>Enviar fichero</button>
