@@ -12,9 +12,11 @@ const useFiles = (idFolder) => {
     const loadFiles = async () => {
       try {
         setLoading(true);
-        const data = idFolder
-          ? console.log("ver readme del backend")
-          : await getAllFilesService(token);
+
+        const data = await getAllFilesService(token);
+        // const data = idFolder
+        //   ? console.log("ver readme del backend")
+        //   : await getAllFilesService(token);
         //console.log(data);
         setFiles(data);
       } catch (error) {

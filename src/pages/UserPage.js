@@ -10,7 +10,6 @@ import { AuthContext } from "../context/AuthContext";
 export const UserPage = () => {
   const { user } = useContext(AuthContext);
 
-  console.log("user", user);
   return (
     <div>
       <h1>Mi perfil</h1>

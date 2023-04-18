@@ -1,5 +1,4 @@
 import { useContext } from "react";
-//import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
@@ -8,7 +7,8 @@ export const Auth = () => {
 
   return user ? (
     <section>
-      Conectado como <Link to="/user">{user.name}</Link>
+      Conectado como
+      <Link to="/user">{user.name}</Link>
       <button onClick={() => logout()}> Salir</button>
     </section>
   ) : null;

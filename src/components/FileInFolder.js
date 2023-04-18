@@ -47,11 +47,8 @@ export const FileInFolder = ({ file, removeFile }) => {
 
   return (
     <article className="file">
-      <p>
-        Nombre del archivo:{file.name}. Habrá que cambiar el nombre en la base
-        de datos
-      </p>
-      <p>Estudiar una vista previa del archivo</p>
+      <p>Nombre del archivo:{file.originalName}.</p>
+
       <p>Subido el {new Date(file.createdAt).toISOString()}</p>
       <MdFilePresent
         style={{
