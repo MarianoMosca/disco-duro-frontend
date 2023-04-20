@@ -32,19 +32,56 @@ div#root > main > section {
 /* Header */
 
 header.main-header {
-  background-color: #3d11ff7a;
+  background-color: #120093;
   padding: 1rem;
   display: flex;
+  flex-direction: row;
+}
+
+header nav {
+  display: inline-flex;
 }
 
 header.main-header h1 {
   flex-grow: 1;
 }
 
+header li {
+  margin-right: 2rem;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header li p {
+  text-decoration: none;
+  color: white;
+}
+
+header .auth {
+  color: white;
+  list-style: none;
+}
+
+header .auth p {
+  text-decoration: none;
+  color: white;
+}
+
+header .auth button {
+  border: none;
+  outline: none;
+  height: 20px;
+  width: 100%;
+  background: #000000;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
 /* Footer */
 
 footer.main-footer {
-  background-color: #3d11ff7a;
+  background-color: #01013f;
   color: #fff;
   padding: 1rem 0;
   text-align: center;

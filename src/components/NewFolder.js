@@ -21,7 +21,7 @@ export const NewFolder = ({ addFolder }) => {
   };
   return (
     <>
-      <form className="newFolder" onSubmit={handleForm}>
+      <form onSubmit={handleForm}>
         <h1>Añadir una carpeta</h1>
 
         <fieldset>

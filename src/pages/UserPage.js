@@ -7,11 +7,13 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { EditUser } from "../components/EditUser";
 
+import "./css/userPage.css";
+
 export const UserPage = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <div>
+    <div className="userPage">
       <h1>Mi perfil</h1>
       <Profile user={user} />
       <EditUser />

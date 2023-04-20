@@ -7,21 +7,27 @@ export const Header = () => {
   const { token } = useContext(AuthContext);
   return (
     <header className="main-header">
-      <h1>Disco duro virtual</h1>
+      <h1></h1>
       <nav>
         <ul>
           {!token ? (
             <>
               <li>
-                <Link to="/">Inicio</Link>
+                <Link to="/">
+                  <p>Inicio</p>
+                </Link>
               </li>
               <li>
-                <Link to="/login">Login</Link>
+                <Link to="/login">
+                  <p>login</p>
+                </Link>
               </li>
             </>
           ) : (
             <li>
-              <Link to="/homepage">Ficheros</Link>
+              <Link to="/homepage">
+                <p>Ficheros</p>
+              </Link>
             </li>
           )}
         </ul>
