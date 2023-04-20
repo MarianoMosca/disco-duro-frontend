@@ -26,7 +26,6 @@ export const NewFile = ({ addFile, idFolder }) => {
       }
 
       const fileInfo = await sendFileService({ data, token });
-
       addFile(fileInfo);
 
       setFile([]);

@@ -12,7 +12,6 @@ export const NewFolder = ({ addFolder }) => {
       setLoading(true);
       const data = new FormData(e.target);
       const folder = await sendFolderService({ data, token });
-      console.log(folder);
       addFolder(folder);
     } catch (error) {
       setError(error.message);
