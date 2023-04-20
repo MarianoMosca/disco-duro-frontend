@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 export const FolderPage = () => {
   const { idFolder } = useParams();
   const { files, loading, error, addFile, removeFile } = useFiles(idFolder);
-  // const { id } = useParams();
+  //const { id } = useParams();
   const { folder } = useFolder();
   const folderNames = folder.map((item) => item.name);
   const { user } = useContext(AuthContext);

@@ -7,7 +7,7 @@ export const EditUserAvatar = () => {
   const [avatar, setAvatar] = useState();
   const [result, setResult] = useState(null);
   const { token, updateAvatar } = useContext(AuthContext);
-  // const [previewUrl, setPreviewUrl] = useState(null);
+
   const handleChanged = (e) => {
     setResult(null);
     setAvatar(e.target.files[0]);
@@ -22,7 +22,6 @@ export const EditUserAvatar = () => {
       updateAvatar(response.filename);
     } catch (error) {
       alert(error.message);
-      //cambiar esto por algo que aparezca en pantalla
     }
   };
   return (

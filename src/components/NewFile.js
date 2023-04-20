@@ -36,8 +36,6 @@ export const NewFile = ({ addFile, idFolder }) => {
       }, 3000);
 
       e.target.reset();
-      // window.location.reload();
-      // navigate("/homepage");
     } catch (error) {
       setError(error.message);
     } finally {

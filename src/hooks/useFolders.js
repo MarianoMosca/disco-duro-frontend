@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { getAllFoldersService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
-const useFolders = (id) => {
+export const useFolders = (id) => {
   const [folders, setFolders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");

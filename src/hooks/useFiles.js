@@ -15,7 +15,7 @@ const useFiles = (idFolder) => {
 
         const data = await getAllFilesService(token);
         // const data = idFolder
-        //   ? console.log("ver readme del backend")
+        //   ? await getFilesInFolderDataService
         //   : await getAllFilesService(token);
         //console.log(data);
         setFiles(data);
