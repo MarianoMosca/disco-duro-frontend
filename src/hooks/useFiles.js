@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { getAllFilesService } from "../services";
+import { getAllFilesService, getFilesInFolderDataService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
 const useFiles = (idFolder) => {
@@ -13,10 +13,10 @@ const useFiles = (idFolder) => {
       try {
         setLoading(true);
 
-        const data = await getAllFilesService(token);
-        // const data = idFolder
-        //   ? await getFilesInFolderDataService
-        //   : await getAllFilesService(token);
+        // const data = await getAllFilesService(token);
+        const data = idFolder
+          ? await getFilesInFolderDataService(token, idFolder)
+          : await getAllFilesService(token);
         //console.log(data);
         setFiles(data);
       } catch (error) {

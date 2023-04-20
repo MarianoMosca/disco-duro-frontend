@@ -27,6 +27,7 @@ export const AuthContextProviderComponent = ({ children }) => {
 
   const logout = () => {
     setToken("");
+    localStorage.removeItem("token");
     setUser(null);
   };
 

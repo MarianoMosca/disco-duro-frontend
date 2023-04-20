@@ -13,17 +13,20 @@ import { useParams } from "react-router-dom";
 export const FolderPage = () => {
   const { idFolder } = useParams();
   const { files, loading, error, addFile, removeFile } = useFiles(idFolder);
-  //const { id } = useParams();
-  const { folder } = useFolder();
-  const folderNames = folder.map((item) => item.name);
+
+  const { folder } = useFolder(idFolder);
+  //const folderNames = folder.map((item) => item.name);
+
   const { user } = useContext(AuthContext);
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage message={error} />;
 
+  console.log(files);
+
   return (
     <>
-      <h1 className="carpeta">Carpeta: {folderNames[idFolder - 1]}</h1>
+      <h1 className="carpeta">Carpeta: {folder.name}</h1>
       {user ? <NewFile idFolder={idFolder} addFile={addFile} /> : null}
 
       <h1 className="listaFicheros">Mis ficheros </h1>

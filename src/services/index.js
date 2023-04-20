@@ -202,12 +202,32 @@ export const sendFileInFolderService = async ({ id, data, token }) => {
 
   return json.data;
 };
-export const getFolderDataService = async (token) => {
+export const getAllFolderDataService = async (token) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/folders`, {
     headers: {
       Authorization: token,
     },
   });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+export const getSingleFolderDataService = async (token, idFolder) => {
+  console.log("AAAAAAAAA");
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/folders/${idFolder}`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
 
   const json = await response.json();
 
