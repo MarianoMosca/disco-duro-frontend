@@ -2,17 +2,17 @@ import { useState, useContext } from "react";
 import { updateMyDataService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
-export const EditUser = ({ handleUserUpdate }) => {
-  const { token } = useContext(AuthContext);
+export const EditUser = () => {
+  const { token, updateUser } = useContext(AuthContext);
   const [name, setName] = useState();
   const [email, setEmail] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const updatedUser = await updateMyDataService({ name, email }, token);
+      const updated = await updateMyDataService({ name, email }, token);
 
-      handleUserUpdate(updatedUser);
+      updateUser(updated);
     } catch (error) {
       console.error(error);
     }
@@ -28,6 +28,7 @@ export const EditUser = ({ handleUserUpdate }) => {
             name="name"
             id="name"
             onChange={(e) => setName(e.target.value)}
+            placeholder="Nombre"
           />
         </label>
       </fieldset>
@@ -40,6 +41,7 @@ export const EditUser = ({ handleUserUpdate }) => {
             name="email"
             id="email"
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
           />
         </label>
       </fieldset>

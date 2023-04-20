@@ -31,20 +31,6 @@ export const getFolderFilesService = async (idFolder, token) => {
 
   return json.data;
 };
-// export const getUserFilesService = async (id, token) => {
-//   const response = await fetch(`${process.env.REACT_APP_BACKEND}/files/${id}`, {
-//     headers: {
-//       Authorization: token,
-//     },
-//   });
-//   const json = await response.json();
-
-//   if (!response.ok) {
-//     throw new Error(json.message);
-//   }
-
-//   return json.data;
-// };
 
 export const registerUserService = async ({ name, email, password }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
@@ -114,21 +100,6 @@ export const sendFileService = async ({ data, token }) => {
   return json.data;
 };
 
-// export const getUserDataService = async (id, token) => {
-//   const response = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
-//     headers: {
-//       Authorization: token,
-//     },
-//   });
-
-//   const json = await response.json();
-//   console.log(json);
-//   if (!response.ok) {
-//     throw new Error(json.message);
-//   }
-
-//   return json.data;
-// };
 export const downloadFileService = async ({ token, id }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/download/${id}`,
@@ -230,47 +201,25 @@ export const getFolderDataService = async (token) => {
   return json.data;
 };
 
-// export const sendAvatarService = async ({ data, token }) => {
-//   const response = await fetch(
-//     `${process.env.REACT_APP_BACKEND}/users/avatar`,
-//     {
-//       method: "POST",
-//       body: data,
-//       headers: {
-//         Authorization: token,
-//       },
-//     }
-//   );
+export const getFilesInFolderDataService = async (token, idFolder) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/folders/${idFolder}/files`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
 
-//   const json = await response.json();
+  const json = await response.json();
 
-//   if (!response.ok) {
-//     throw new Error(json.message);
-//   }
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
 
-//   return json.data;
-// };
-// export const sendAvatarService = async ({ avatar, token }) => {
-//   const formData = new FormData();
-//   formData.append("avatar", avatar);
-//   const response = await fetch(
-//     `${process.env.REACT_APP_BACKEND}/users/avatar`,
-//     {
-//       method: "PUT",
+  return json.data;
+};
 
-//       headers: {
-//         Authorization: token,
-//       },
-//       body: formData,
-//     }
-//   );
-//   const json = await response.json();
-//   if (!response.ok) {
-//     throw new Error(json.message);
-//   }
-
-//   return json.data;
-// };
 export const updateAvatarService = async (formData, token) => {
   try {
     const response = await fetch(
@@ -299,9 +248,9 @@ export const updateMyDataService = async (userData, token) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: token,
     },
-    body: JSON.stringify({ userData }),
+    body: JSON.stringify(userData),
   });
   if (response.ok) {
     const user = await response.json();
