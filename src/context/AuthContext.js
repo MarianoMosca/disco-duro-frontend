@@ -40,9 +40,17 @@ export const AuthContextProviderComponent = ({ children }) => {
       avatar: filename,
     });
   };
+  const updateUser = ({ name, email }) => {
+    setUser({
+      name,
+      email,
+    });
+  };
 
   return (
-    <AuthContext.Provider value={{ token, user, login, logout, updateAvatar }}>
+    <AuthContext.Provider
+      value={{ token, user, login, logout, updateAvatar, updateUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

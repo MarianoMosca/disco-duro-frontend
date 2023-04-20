@@ -7,7 +7,6 @@ export const EditUserAvatar = () => {
   const [avatar, setAvatar] = useState();
   const [result, setResult] = useState(null);
   const { token, updateAvatar } = useContext(AuthContext);
-
   const handleChanged = (e) => {
     setResult(null);
     setAvatar(e.target.files[0]);
@@ -31,11 +30,6 @@ export const EditUserAvatar = () => {
         <fieldset>
           <label htmlFor="file">Avatar</label>
           <input type="file" name="avatar" onChange={handleChanged} />
-          {/*  {previewUrl && (
-            <div>
-              <img src={previewUrl} alt="preview" style={{ width: "100px " }} />
-            </div>
-          )} */}
         </fieldset>
         <button onClick={handleUpload}>Subir Avatar</button>
         <div> {result && <p>{result.data}</p>}</div>
