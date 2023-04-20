@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { editUserService, getAllFilesService } from "../services";
+import { editUserService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
 const useUser = (id) => {

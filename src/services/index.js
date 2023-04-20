@@ -31,23 +31,6 @@ export const getFolderFilesService = async (idFolder, token) => {
 
   return json.data;
 };
-export const getFilesInFolderDataService = async (token, idFolder) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/folders/${idFolder}/files`,
-    {
-      headers: {
-        Authorization: token,
-      },
-    }
-  );
-  const json = await response.json();
-
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
-
-  return json.data;
-};
 
 export const registerUserService = async ({ name, email, password }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
@@ -222,6 +205,25 @@ export const getSingleFolderDataService = async (token, idFolder) => {
   console.log("AAAAAAAAA");
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/folders/${idFolder}`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+export const getFilesInFolderDataService = async (token, idFolder) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/folders/${idFolder}/files`,
     {
       headers: {
         Authorization: token,

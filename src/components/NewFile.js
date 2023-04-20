@@ -45,10 +45,10 @@ export const NewFile = ({ addFile, idFolder }) => {
     <>
       <h1>Añadir un fichero</h1>
       <form className="newfile" onSubmit={handleForm}>
-        <fieldset>
+        {/* <fieldset>
           <label htmlFor="name">Nombre</label>
           <input type="name" name="name" id="name" required />
-        </fieldset>
+        </fieldset> */}
         <fieldset>
           <label htmlFor="file">Fichero</label>
           <input
