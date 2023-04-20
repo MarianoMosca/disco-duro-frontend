@@ -11,7 +11,7 @@ import { AuthContext } from "../context/AuthContext";
 // import { RefreshFolder } from "../components/RefreshFolder";
 import { NewFolder } from "../components/NewFolder";
 import { FolderList } from "../components/FolderList";
-import useFolders from "../hooks/useFolder";
+import useFolders from "../hooks/useFolders";
 //import { Navigate } from "react-router-dom";
 
 export const HomePage = () => {

@@ -7,7 +7,6 @@ export const EditUserAvatar = () => {
   const [avatar, setAvatar] = useState();
   const [result, setResult] = useState(null);
   const { token, updateAvatar } = useContext(AuthContext);
-
   const handleChanged = (e) => {
     setResult(null);
     setAvatar(e.target.files[0]);
