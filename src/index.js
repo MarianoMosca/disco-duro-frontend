@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
-import { LoginFormPage } from "./pages/LoginFormPage";
 import { RegisterFormPage } from "./pages/RegisterFormPage";
-import { UserProfile } from "./pages/UserProfile";
+
+import { NotFoundPage } from "./pages/NotFoundPage";
+import { LoginPage } from "./pages/LoginPage";
+import {
+  AuthContext,
+  AuthContextProviderComponent,
+} from "./context/AuthContext";
+import { UserPage } from "./pages/UserPage";
+import { FolderPage } from "./pages/FolderPage";
+
+const PrivateRoute = ({ children }) => {
+  const { token } = useContext(AuthContext);
+
+  if (!token) return <Navigate to="/login" />;
+
+  return children;
+};
 
 const router = createBrowserRouter([
   {
@@ -19,15 +38,28 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <LoginFormPage />,
+        element: <LoginPage />,
       },
       {
         path: "homepage",
-        element: <HomePage />,
+        element: (
+          <PrivateRoute>
+            <HomePage />
+          </PrivateRoute>
+        ),
       },
       {
-        path: "profile",
-        element: <UserProfile />,
+        path: "user",
+        element: <UserPage />,
+      },
+
+      {
+        path: "folders/:idFolder",
+        element: <FolderPage />,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
       },
     ],
   },
@@ -36,6 +68,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthContextProviderComponent>
+      <RouterProvider router={router} />
+    </AuthContextProviderComponent>
   </React.StrictMode>
 );

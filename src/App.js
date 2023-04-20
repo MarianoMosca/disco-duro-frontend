@@ -6,60 +6,39 @@ import { Header } from "./components/Header";
 import { RegisterFormPage } from "./pages/RegisterFormPage"; */
 
 import { Link, Outlet } from "react-router-dom";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
-  return (
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Inicio</Link>
-          </li>
-
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
-      </nav>
-      <Outlet />
-    </div>
-  );
-}
-
-/* function App() {
+  const { token } = useContext(AuthContext);
   return (
     <main>
       <Header />
-      
-      <section>
-        <h3>Carpetas</h3>
-        <Folders />
-        <h3>Archivos</h3>
-        <Files />
-      </section>
-      <section>
-        <menu>
-          <ul>
-            <li>Crear Carpeta</li>
-          </ul>
-          <ul>
-            <li>Subir archivo</li>
-          </ul>
-        </menu>
-      </section>
-      <section>
-        <menu>
-          <ul>
-            <li>Informacion del Archivo seleccionado</li>
-          </ul>
-          <ul>
-            <li>Opciones de archivo</li>
-          </ul>
-        </menu>
-      </section>
+
+      <nav>
+        <ul>
+          {!token ? (
+            <>
+              <li>
+                <Link to="/">Inicio</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </>
+          ) : (
+            <li>
+              <Link to="/homepage">Ficheros</Link>
+            </li>
+          )}
+        </ul>
+      </nav>
+      <Outlet />
       <Footer />
     </main>
   );
-} */
+}
 
 export default App;
