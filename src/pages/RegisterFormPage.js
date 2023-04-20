@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUserService } from "../services";
 
+import "./css/registerFormPage.css";
+
 export const RegisterFormPage = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -25,7 +27,7 @@ export const RegisterFormPage = () => {
     }
   };
   return (
-    <section>
+    <section className="registerPage">
       <h1>Register</h1>
       <form onSubmit={handleForm}>
         <fieldset>

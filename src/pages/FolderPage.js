@@ -22,7 +22,7 @@ export const FolderPage = () => {
   if (error) return <ErrorMessage message={error} />;
 
   return (
-    <>
+    <section>
       <h1 className="carpeta">Carpeta: {folderNames[idFolder - 1]}</h1>
       {user ? <NewFile idFolder={idFolder} addFile={addFile} /> : null}
 
@@ -33,6 +33,6 @@ export const FolderPage = () => {
         files={files}
         removeFile={removeFile}
       />
-    </>
+    </section>
   );
 };
