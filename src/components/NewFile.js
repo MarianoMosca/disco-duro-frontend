@@ -44,9 +44,9 @@ export const NewFile = ({ addFile, idFolder }) => {
     }
   };
   return (
-    <>
+    <section className="new-file">
       <h1>Añadir un fichero</h1>
-      <form className="newfile" onSubmit={handleForm}>
+      <form onSubmit={handleForm}>
         <fieldset>
           <label htmlFor="name">Nombre</label>
           <input type="name" name="name" id="name" required />
@@ -78,6 +78,6 @@ export const NewFile = ({ addFile, idFolder }) => {
         {loading ? <p>Cargando fichero...</p> : null}
       </form>
       {sendMessage && <p>{sendMessage}</p>}
-    </>
+    </section>
   );
 };

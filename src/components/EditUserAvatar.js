@@ -25,16 +25,15 @@ export const EditUserAvatar = () => {
     }
   };
   return (
-    <>
-      <h1>Avatar</h1>
-      <form className="avatar">
-        <fieldset>
-          <label htmlFor="file">Avatar</label>
-          <input type="file" name="avatar" onChange={handleChanged} />
-        </fieldset>
-        <button onClick={handleUpload}>Subir Avatar</button>
+    <section className="avatar">
+      <form>
+        <label htmlFor="file"></label>
+        <input type="file" name="avatar" onChange={handleChanged} />
+        <button className="subir-avatar" onClick={handleUpload}>
+          Subir Avatar
+        </button>
         <div> {result && <p>{result.data}</p>}</div>
       </form>
-    </>
+    </section>
   );
 };

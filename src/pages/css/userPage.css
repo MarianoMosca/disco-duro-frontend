@@ -1,6 +1,101 @@
-.userPage {
-  background-color: wheat;
+body {
+  background: #8aedf6;
+  background: -moz-linear-gradient(left, #8aedf6 0%, #60a2f5 100%);
+  background: -webkit-linear-gradient(left, #8aedf6 0%, #60a2f5 100%);
+  background: linear-gradient(to right, #8aedf6 0%, #60a2f5 100%);
 }
 
+.userPage {
+  border-radius: 90px;
+  width: 768px;
+  height: 420px;
+  max-width: 100%;
+  min-height: 480px;
+  position: relative;
+  overflow: hidden;
+  background: #270093;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.userPage h1 {
+  font-weight: bold;
+  display: block;
+  justify-items: center;
+  left: calc(50%);
+}
 .userPage h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.userPage img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  top: 2rem;
+  left: calc(75%);
+}
+
+.userPage label {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  display: block;
+}
+
+.edit-user {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 1rem;
+  color: #fff;
+  font-size: 16px;
+}
+
+.actualizar-button {
+  border: none;
+  outline: none;
+  height: 2rem;
+  width: 20%;
+  left: 50%;
+  background: #fff;
+  color: black;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.avatar {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  border: none;
+  background: transparent;
+  outline: none;
+  height: 1rem;
+  color: #fff;
+  font-size: 16px;
+}
+
+.subir-avatar {
+  border: none;
+  outline: none;
+  height: 2rem;
+  width: 20%;
+  left: 50%;
+  background: #fff;
+  color: black;
+  font-size: 16px;
+  border-radius: 20px;
 }

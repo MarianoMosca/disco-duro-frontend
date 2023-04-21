@@ -47,9 +47,11 @@ export const File = ({ file, removeFile }) => {
 
   return (
     <article className="file">
-      <p>Nombre del archivo: {file.originalName}.</p>
+      <p className="nombre-fichero">Nombre del archivo: {file.originalName}.</p>
 
-      <p>Subido el {new Date(file.createdAt).toISOString()}</p>
+      <p className="created-at">
+        Subido el {new Date(file.createdAt).toISOString()}
+      </p>
       <MdFilePresent
         style={{
           width: 50,
@@ -59,7 +61,7 @@ export const File = ({ file, removeFile }) => {
       />
 
       {user && user.id === file.idUser ? (
-        <section>
+        <section className="borrar-fichero">
           <button
             onClick={() => {
               if (window.confirm("¿Estás seguro?")) deleteFile(file.id);
@@ -73,7 +75,7 @@ export const File = ({ file, removeFile }) => {
       ) : null}
 
       {user && user.id === file.idUser ? (
-        <section>
+        <section className="descargar-fichero">
           <button
             onClick={() => {
               if (window.confirm("¿Estás seguro?")) downloadFile(file.id);

@@ -20,7 +20,7 @@ export const NewFolder = ({ addFolder }) => {
     }
   };
   return (
-    <>
+    <section className="carpetas">
       <form onSubmit={handleForm}>
         <h1>Añadir una carpeta</h1>
 
@@ -37,6 +37,6 @@ export const NewFolder = ({ addFolder }) => {
         {loading ? <p>Cargando carpeta...</p> : null}
         {error ? <p>{error}</p> : null}
       </form>
-    </>
+    </section>
   );
 };
