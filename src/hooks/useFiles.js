@@ -13,11 +13,10 @@ const useFiles = (idFolder) => {
       try {
         setLoading(true);
 
-        // const data = await getAllFilesService(token);
         const data = idFolder
           ? await getFilesInFolderDataService(token, idFolder)
           : await getAllFilesService(token);
-        //console.log(data);
+
         setFiles(data);
       } catch (error) {
         setError(error.message);

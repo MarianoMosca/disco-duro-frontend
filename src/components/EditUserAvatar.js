@@ -21,7 +21,6 @@ export const EditUserAvatar = () => {
       updateAvatar(response.filename);
     } catch (error) {
       alert(error.message);
-      //cambiar esto por algo que aparezca en pantalla
     }
   };
   return (
