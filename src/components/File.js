@@ -54,9 +54,14 @@ export const File = ({ file, removeFile }) => {
       </p>
       <MdFilePresent
         style={{
-          width: 50,
-          height: 50,
+          width: 70,
+          height: 70,
+          margin: "5%",
+          marginLeft: "35%",
           color: "red",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       />
 

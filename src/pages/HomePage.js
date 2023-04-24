@@ -31,11 +31,11 @@ export const HomePage = () => {
     <section className="homePage">
       {user ? <NewFile addFile={addFile} /> : null}
 
-      <h1>Mis ficheros </h1>
+      <h1 className="ficheros-h1">Mis ficheros: </h1>
 
       <FileList files={files} removeFile={removeFile} />
 
-      <h1>Mis carpetas </h1>
+      <h2 className="carpetas-h2">Mis carpetas: </h2>
       {user ? <NewFolder addFolder={addFolder} /> : null}
 
       <FolderList folders={folders} />
