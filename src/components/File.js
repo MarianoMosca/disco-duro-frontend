@@ -68,7 +68,6 @@ export const File = ({ file, removeFile }) => {
             Borrar fichero
           </button>
           {error ? <p>{error}</p> : null}
-          {isDownloaded ? <p>Archivo descargado correctamente</p> : null}
         </section>
       ) : null}
 
@@ -82,6 +81,7 @@ export const File = ({ file, removeFile }) => {
             Descargar fichero
           </button>
           {error ? <p>{error}</p> : null}
+          {isDownloaded ? <p>Archivo descargado correctamente</p> : null}
         </section>
       ) : null}
     </article>

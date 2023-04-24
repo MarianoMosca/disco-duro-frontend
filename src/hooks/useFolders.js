@@ -13,7 +13,7 @@ export const useFolders = (id) => {
       try {
         setLoading(true);
         const data = await getAllFoldersService(token);
-        //console.log(data);
+
         setFolders(data.folder);
       } catch (error) {
         setError(error.message);
@@ -29,6 +29,10 @@ export const useFolders = (id) => {
     setFolders([data, ...folders]);
   };
 
-  return { folders, loading, error, addFolder };
+  const removeFolder = (id) => {
+    setFolders(folders.filter((folder) => folder.id !== id));
+  };
+
+  return { folders, loading, error, addFolder, removeFolder };
 };
 export default useFolders;

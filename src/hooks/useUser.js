@@ -14,7 +14,7 @@ const useUser = (id) => {
       try {
         setLoading(true);
         const data = await editUserService({ name, email, token });
-        //console.log(data);
+
         setName(name);
         setEmail(email);
       } catch (error) {

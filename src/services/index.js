@@ -6,24 +6,6 @@ export const getAllFilesService = async (token) => {
   });
 
   const json = await response.json();
-  //console.log(json);
-
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
-
-  return json.data;
-};
-
-export const getFolderFilesService = async (idFolder, token) => {
-  const response = await fetch(`${process.env.REACT_APP_BACKEND}/files`, {
-    headers: {
-      Authorization: token,
-    },
-  });
-
-  const json = await response.json();
-  //console.log(json);
 
   if (!response.ok) {
     throw new Error(json.message);
@@ -74,7 +56,7 @@ export const getMyDataService = async (token) => {
   });
 
   const json = await response.json();
-  //comprobado ok.
+
   if (!response.ok) {
     throw new Error(json.message);
   }
@@ -131,6 +113,23 @@ export const deleteFileService = async ({ id, token }) => {
     throw new Error(json.message);
   }
 };
+export const deleteFolderService = async ({ id, idUser, token }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/users/${idUser}/folders/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
 export const sendFolderService = async ({ data, token }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/folders`, {
     method: "POST",
@@ -157,7 +156,6 @@ export const getAllFoldersService = async (token) => {
   });
 
   const json = await response.json();
-  //console.log(json);
 
   if (!response.ok) {
     throw new Error(json.message);
@@ -165,26 +163,7 @@ export const getAllFoldersService = async (token) => {
 
   return json.data;
 };
-export const sendFileInFolderService = async ({ id, data, token }) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/folders/:idFolders`,
-    {
-      method: "POST",
-      body: data,
-      headers: {
-        Authorization: token,
-      },
-    }
-  );
 
-  const json = await response.json();
-
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
-
-  return json.data;
-};
 export const getAllFolderDataService = async (token) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/folders`, {
     headers: {
@@ -202,7 +181,6 @@ export const getAllFolderDataService = async (token) => {
 };
 
 export const getSingleFolderDataService = async (token, idFolder) => {
-  console.log("AAAAAAAAA");
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/folders/${idFolder}`,
     {

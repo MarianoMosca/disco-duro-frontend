@@ -67,7 +67,6 @@ export const FileInFolder = ({ file, removeFile }) => {
             Borrar fichero
           </button>
           {error ? <p>{error}</p> : null}
-          {isDownloaded ? <p>Archivo descargado correctamente</p> : null}
         </section>
       ) : null}
 
@@ -81,6 +80,7 @@ export const FileInFolder = ({ file, removeFile }) => {
             Descargar fichero
           </button>
           {error ? <p>{error}</p> : null}
+          {isDownloaded ? <p>Archivo descargado correctamente</p> : null}
         </section>
       ) : null}
     </article>
