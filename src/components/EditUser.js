@@ -12,7 +12,7 @@ export const EditUser = () => {
     try {
       const updated = await updateMyDataService({ name, email }, token);
 
-      updateUser(updated);
+      if (token) updateUser(updated);
     } catch (error) {
       console.error(error);
     }
