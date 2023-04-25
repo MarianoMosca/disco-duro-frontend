@@ -50,12 +50,20 @@ const router = createBrowserRouter([
       },
       {
         path: "user",
-        element: <UserPage />,
+        element: (
+          <PrivateRoute>
+            <UserPage />
+          </PrivateRoute>
+        ),
       },
 
       {
         path: "folders/:idFolder",
-        element: <FolderPage />,
+        element: (
+          <PrivateRoute>
+            <FolderPage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "*",
