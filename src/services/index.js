@@ -274,7 +274,7 @@ export const updateMyDataService = async (userData, token) => {
   });
   if (response.ok) {
     const user = await response.json();
-    return user;
+    return user.data;
   } else {
     throw new Error("Error al actualizar el usuario");
   }
