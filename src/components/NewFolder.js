@@ -29,6 +29,7 @@ export const NewFolder = ({ addFolder }) => {
         <br></br>
 
         <input type="name" name="name" id="name" required />
+
         <label htmlFor="file">Fichero (opcional) </label>
         <br></br>
 

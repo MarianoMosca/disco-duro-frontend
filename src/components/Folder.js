@@ -7,9 +7,14 @@ export const Folder = ({ folder }) => {
       <p>Creada el {new Date(folder.createdAt).toISOString()}</p>
       <MdFolderShared
         style={{
-          width: 50,
-          height: 50,
-          color: "red",
+          width: 70,
+          height: 70,
+          margin: "5%",
+          marginLeft: "35%",
+          color: "#172a45",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       />
     </article>
