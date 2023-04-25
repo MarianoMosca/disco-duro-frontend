@@ -46,7 +46,7 @@ export const File = ({ file, removeFile }) => {
   };
 
   return (
-    <article className="file">
+    <section className="file">
       <p className="nombre-fichero">Nombre del archivo: {file.originalName}.</p>
 
       <p className="created-at">
@@ -58,39 +58,43 @@ export const File = ({ file, removeFile }) => {
           height: 70,
           margin: "5%",
           marginLeft: "35%",
-          color: "red",
+          color: "#172a45",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       />
 
-      {user && user.id === file.idUser ? (
-        <section className="borrar-fichero">
-          <button
-            onClick={() => {
-              if (window.confirm("¿Estás seguro?")) deleteFile(file.id);
-            }}
-          >
-            Borrar fichero
-          </button>
-          {error ? <p>{error}</p> : null}
-          {isDownloaded ? <p>Archivo descargado correctamente</p> : null}
-        </section>
-      ) : null}
+      <section className="contenedor-botones">
+        {user && user.id === file.idUser ? (
+          <article className="borrar-fichero">
+            <button
+              className="boton-borrar"
+              onClick={() => {
+                if (window.confirm("¿Estás seguro?")) deleteFile(file.id);
+              }}
+            >
+              Borrar fichero
+            </button>
+            {error ? <p>{error}</p> : null}
+            {isDownloaded ? <p>Archivo descargado correctamente</p> : null}
+          </article>
+        ) : null}
 
-      {user && user.id === file.idUser ? (
-        <section className="descargar-fichero">
-          <button
-            onClick={() => {
-              if (window.confirm("¿Estás seguro?")) downloadFile(file.id);
-            }}
-          >
-            Descargar fichero
-          </button>
-          {error ? <p>{error}</p> : null}
-        </section>
-      ) : null}
-    </article>
+        {user && user.id === file.idUser ? (
+          <article className="descargar-fichero">
+            <button
+              className="boton-descarga"
+              onClick={() => {
+                if (window.confirm("¿Estás seguro?")) downloadFile(file.id);
+              }}
+            >
+              Descargar fichero
+            </button>
+            {error ? <p>{error}</p> : null}
+          </article>
+        ) : null}
+      </section>
+    </section>
   );
 };

@@ -47,16 +47,6 @@ export const NewFile = ({ addFile, idFolder }) => {
     <section className="new-file">
       <h1>Añadir un fichero :</h1>
       <form onSubmit={handleForm}>
-        <label htmlFor="name">Nombre :</label>
-        <br></br>
-        <input
-          className="nombre-button"
-          type="name"
-          name="name"
-          id="name"
-          required
-        />
-
         <label htmlFor="file">Fichero :</label>
         <br></br>
         <input

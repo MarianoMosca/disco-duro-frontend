@@ -1,8 +1,18 @@
 body {
-  background: #8aedf6;
-  background: -moz-linear-gradient(left, #8aedf6 0%, #60a2f5 100%);
-  background: -webkit-linear-gradient(left, #8aedf6 0%, #60a2f5 100%);
-  background: linear-gradient(to right, #8aedf6 0%, #60a2f5 100%);
+  background: #0f2027;
+  background: -moz-linear-gradient(
+    -45deg,
+    #0f2027 0%,
+    #203a43 50%,
+    #2c5364 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    #0f2027 0%,
+    #203a43 50%,
+    #2c5364 100%
+  );
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
 }
 
 .userPage {
@@ -13,7 +23,9 @@ body {
   min-height: 480px;
   position: relative;
   overflow: hidden;
-  background: #270093;
+  background: #54678f;
+  box-shadow: 5px 5px 15px 5px #0a192f;
+  box-shadow: 5px 5px 15px 5px #0a192f;
   color: #fff;
   top: 50%;
   left: 50%;

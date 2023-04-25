@@ -29,9 +29,9 @@ export const HomePage = () => {
   //console.log(files); //no carga nada
   return (
     <section className="homePage">
-      {user ? <NewFile addFile={addFile} /> : null}
-
       <h1 className="ficheros-h1">Mis ficheros: </h1>
+      <br></br>
+      {user ? <NewFile addFile={addFile} /> : null}
 
       <FileList files={files} removeFile={removeFile} />
 
