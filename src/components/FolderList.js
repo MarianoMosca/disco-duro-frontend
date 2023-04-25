@@ -3,14 +3,16 @@ import { Folder } from "./Folder";
 
 export const FolderList = ({ folders }) => {
   return folders?.length ? (
-    <ul className="filesList">
+    <ul className="folder-list">
       {folders.map((folder) => {
         return (
           <li key={folder.id}>
             <Folder key={folder.id} folder={folder} />
 
             <Link to={`/folders/${folder.id}`}>
-              <button>operaciones con ficheros</button>
+              <button className="operaciones-ficheros">
+                operaciones con ficheros
+              </button>
             </Link>
           </li>
         );

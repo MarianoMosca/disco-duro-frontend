@@ -44,24 +44,20 @@ export const NewFile = ({ addFile, idFolder }) => {
     }
   };
   return (
-    <>
-      <h1>Añadir un fichero</h1>
-      <form className="newfile" onSubmit={handleForm}>
-        <fieldset>
-          <label htmlFor="name">Nombre</label>
-          <input type="name" name="name" id="name" required />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="file">Fichero</label>
-          <input
-            type="file"
-            name="file"
-            id="file"
-            //accept={"file/*"}
-            onChange={(e) => setFile(e.target.files[0])}
-          />
+    <section className="new-file">
+      <h1>Añadir un fichero :</h1>
+      <form onSubmit={handleForm}>
+        <label htmlFor="file">Fichero :</label>
+        <br></br>
+        <input
+          className="archivo-button"
+          type="file"
+          name="file"
+          id="file"
+          onChange={(e) => setFile(e.target.files[0])}
+        />
 
-          {/* {file ? (
+        {/* {file ? (
             <figure>
               <img
                 src={URL.createObjectURL(file)} //imagen previa del fichero
@@ -70,14 +66,14 @@ export const NewFile = ({ addFile, idFolder }) => {
               />
             </figure>
           ) : null} */}
-        </fieldset>
 
-        <button>Enviar fichero</button>
+        {/* </fieldset> */}
+        <button className="enviar-fichero">Enviar fichero</button>
 
         {error ? <p>{error}</p> : null}
         {loading ? <p>Cargando fichero...</p> : null}
       </form>
       {sendMessage && <p>{sendMessage}</p>}
-    </>
+    </section>
   );
 };

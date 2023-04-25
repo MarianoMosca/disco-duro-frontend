@@ -25,8 +25,12 @@ export const FolderPage = () => {
   console.log(files);
 
   return (
-    <>
+
+    <section>
+      <h1 className="carpeta">Carpeta: {folderNames[idFolder - 1]}</h1>
+
       <h1 className="carpeta">Carpeta: {folder.name}</h1>
+
       {user ? <NewFile idFolder={idFolder} addFile={addFile} /> : null}
 
       <h1 className="listaFicheros">Mis ficheros </h1>
@@ -36,6 +40,6 @@ export const FolderPage = () => {
         files={files}
         removeFile={removeFile}
       />
-    </>
+    </section>
   );
 };

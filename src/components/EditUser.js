@@ -19,11 +19,12 @@ export const EditUser = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <fieldset>
+    <section>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="name">
           Nuevo nombre de usuario:
           <input
+            className="edit-user"
             type="text"
             name="name"
             id="name"
@@ -31,12 +32,11 @@ export const EditUser = () => {
             placeholder="Nombre"
           />
         </label>
-      </fieldset>
 
-      <fieldset>
         <label htmlFor="email">
           Nuevo email de usuario:
           <input
+            className="edit-user"
             type="text"
             name="email"
             id="email"
@@ -44,8 +44,10 @@ export const EditUser = () => {
             placeholder="Email"
           />
         </label>
-      </fieldset>
-      <button type="submit">Actualizar</button>
-    </form>
+        <button className="actualizar-button" type="submit">
+          Actualizar
+        </button>
+      </form>
+    </section>
   );
 };

@@ -14,6 +14,8 @@ import { FolderList } from "../components/FolderList";
 import useFolders from "../hooks/useFolders";
 //import { Navigate } from "react-router-dom";
 
+import "./css/homepage/homepage.css";
+
 export const HomePage = () => {
   // const { id } = useParams();
   const { user } = useContext(AuthContext);
@@ -26,19 +28,19 @@ export const HomePage = () => {
 
   //console.log(files); //no carga nada
   return (
-    <>
+    <section className="homePage">
+      <h1 className="ficheros-h1">Mis ficheros: </h1>
+      <br></br>
       {user ? <NewFile addFile={addFile} /> : null}
-
-      <h1 className="listaFicheros">Mis ficheros </h1>
 
       <FileList files={files} removeFile={removeFile} />
 
-      <h1 className="listaCarpetas">Mis carpetas </h1>
+      <h2 className="carpetas-h2">Mis carpetas: </h2>
       {user ? <NewFolder addFolder={addFolder} /> : null}
 
       <FolderList folders={folders} />
 
       {/* <RefreshFolder /> */}
-    </>
+    </section>
   );
 };

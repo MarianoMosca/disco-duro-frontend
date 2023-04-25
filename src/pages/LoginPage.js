@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { loginUserService } from "../services";
 
+import "./css/loginPage.css";
+
 export const LoginPage = () => {
   const navigate = useNavigate();
   const { token, login } = useContext(AuthContext);
@@ -26,31 +28,30 @@ export const LoginPage = () => {
     }
   };
   return (
-    <section>
-      <h1>Login</h1>
+    <section className="loginPage">
       <form onSubmit={handleForm}>
-        <fieldset>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={email}
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="pass">Password</label>
-          <input
-            type="password"
-            name="pass"
-            id="pass"
-            value={password}
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </fieldset>
+        <h1>Login</h1>
+        <img src="./logoConFondo.jpg" alt="logo drive boss"></img>
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Escriba su email"
+          value={email}
+          required
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="pass">Password</label>
+        <input
+          type="password"
+          name="pass"
+          id="pass"
+          placeholder="Escriba su contraseña"
+          value={password}
+          required
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
         <button>Login</button>
         {error ? <p>{error}</p> : null}
