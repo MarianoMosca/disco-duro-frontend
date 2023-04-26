@@ -23,8 +23,11 @@ export const Folder = ({ folder, removeFolder }) => {
   };
   return (
     <article className="folder">
-      <p>Nombre de la carpeta :{folder.name}.</p>
-      <p>Creada el {new Date(folder.createdAt).toISOString()}</p>
+      <p className="nombre-carpeta">Nombre de la carpeta:</p>
+      <p className="folder-name">{folder.name}.</p>
+      <p className="created-carpeta">
+        Creada el {new Date(folder.createdAt).toISOString()}
+      </p>
       <MdFolderShared
         style={{
           width: 70,
@@ -39,9 +42,10 @@ export const Folder = ({ folder, removeFolder }) => {
       />
       {user && user.id === folder.idUser ? (
         <section>
-          <section>
+          <section className="contenedor-carpetas">
             <article>
               <button
+                className="boton-borrar-carpeta"
                 onClick={() => {
                   if (
                     window.confirm(
@@ -56,7 +60,7 @@ export const Folder = ({ folder, removeFolder }) => {
             </article>
             <article>
               <Link to={`/folders/${folder.id}`}>
-                <button>Acceder</button>
+                <button className="boton-acceder">Acceder</button>
               </Link>
             </article>
           </section>

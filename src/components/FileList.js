@@ -17,6 +17,6 @@ export const FileList = ({ files, removeFile }) => {
       })}
     </ul>
   ) : (
-    <p>No hay ficheros disponibles. Hay que estar registrado.</p>
+    <p className="ficheros-disponibles">No hay ficheros disponibles.</p>
   );
 };

@@ -66,3 +66,15 @@
   font-size: 18px;
   border-radius: 20px;
 }
+
+.registerPage .descripcion {
+  font-size: 1rem;
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  position: fixed;
+  bottom: 50px;
+  text-align: center;
+  margin: 0 auto;
+}

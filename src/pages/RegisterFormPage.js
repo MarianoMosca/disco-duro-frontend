@@ -28,6 +28,10 @@ export const RegisterFormPage = () => {
   };
   return (
     <section className="registerPage">
+      <h1 className="descripcion">
+        En esta web podrás registrarte y acceder a tu espacio personal donde
+        subir tus ficheros
+      </h1>
       <form onSubmit={handleForm}>
         <img src="./logoConFondo.jpg" alt="logo drive boss"></img>
         <h1>Registro de usuario</h1>

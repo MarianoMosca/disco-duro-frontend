@@ -2,7 +2,7 @@ import { FileInFolder } from "./FileInFolder";
 
 export const FileListInFolder = ({ files, removeFile }) => {
   return files?.length ? (
-    <ul className="filesList">
+    <ul className="file-list">
       {files.map((file) => {
         return (
           <li key={file.id}>

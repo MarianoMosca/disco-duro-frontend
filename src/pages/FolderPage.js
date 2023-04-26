@@ -10,6 +10,8 @@ import { FileListInFolder } from "../components/FileListInFolder";
 import useFolder from "../hooks/useFolder";
 import { useParams } from "react-router-dom";
 
+import "./css/homepage/homepage.css";
+
 export const FolderPage = () => {
   const { idFolder } = useParams();
   const { files, loading, error, addFile, removeFile } = useFiles(idFolder);
@@ -26,12 +28,14 @@ export const FolderPage = () => {
 
       {user ? <NewFile idFolder={idFolder} addFile={addFile} /> : null}
 
-      <h1 className="listaFicheros">Mis ficheros </h1>
-      <FileListInFolder
-        idFolder={idFolder}
-        files={files}
-        removeFile={removeFile}
-      />
+      <h1 className="mis-ficheros">Mis ficheros: </h1>
+      <section className=" lista-ficheros-carpetas">
+        <FileListInFolder
+          idFolder={idFolder}
+          files={files}
+          removeFile={removeFile}
+        />
+      </section>
     </section>
   );
 };
