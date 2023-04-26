@@ -13,14 +13,10 @@ export const FolderList = ({ folders, removeFolder }) => {
               removeFolder={removeFolder}
             />
 
-            <Link to={`/folders/${folder.id}`}>
-              <button>operaciones con ficheros</button>
-            </Link>
+            <Link to={`/folders/${folder.id}`}></Link>
           </li>
         );
       })}
     </ul>
-  ) : (
-    <p>No hay carpetas disponibles. Hay que estar registrado.</p>
-  );
+  ) : null;
 };

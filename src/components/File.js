@@ -68,21 +68,6 @@ export const File = ({ file, removeFile }) => {
 
       <section className="contenedor-botones">
         {user && user.id === file.idUser ? (
-          <article className="borrar-fichero">
-            <button
-              className="boton-borrar"
-              onClick={() => {
-                if (window.confirm("¿Estás seguro?")) deleteFile(file.id);
-              }}
-            >
-              Borrar
-            </button>
-            {error ? <p>{error}</p> : null}
-            {isDownloaded ? <p>Archivo descargado correctamente</p> : null}
-          </article>
-        ) : null}
-
-        {user && user.id === file.idUser ? (
           <article className="descargar-fichero">
             <button
               className="boton-descarga"
@@ -91,6 +76,20 @@ export const File = ({ file, removeFile }) => {
               }}
             >
               Descargar
+            </button>
+            {error ? <p>{error}</p> : null}
+            {isDownloaded ? <p>Archivo descargado correctamente</p> : null}
+          </article>
+        ) : null}
+        {user && user.id === file.idUser ? (
+          <article className="borrar-fichero">
+            <button
+              className="boton-borrar"
+              onClick={() => {
+                if (window.confirm("¿Estás seguro?")) deleteFile(file.id);
+              }}
+            >
+              Borrar
             </button>
             {error ? <p>{error}</p> : null}
           </article>
