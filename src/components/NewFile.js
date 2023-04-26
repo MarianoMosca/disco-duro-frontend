@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { sendFileService } from "../services";
-// import { useNavigate } from "react-router-dom";
 
 export const NewFile = ({ addFile, idFolder }) => {
   const { token } = useContext(AuthContext);
@@ -41,25 +40,25 @@ export const NewFile = ({ addFile, idFolder }) => {
     }
   };
   return (
-    <>
-      <h1>Añadir un fichero</h1>
-      <form className="newfile" onSubmit={handleForm}>
-        <fieldset>
-          <label htmlFor="file">Fichero</label>
-          <input
-            type="file"
-            name="file"
-            id="file"
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-        </fieldset>
+    <section className="new-file">
+      <h1>Añadir un fichero :</h1>
+      <form onSubmit={handleForm}>
+        <label htmlFor="file">Fichero :</label>
+        <br></br>
+        <input
+          className="archivo-button"
+          type="file"
+          name="file"
+          id="file"
+          onChange={(e) => setFile(e.target.files[0])}
+        />
 
-        <button>Enviar fichero</button>
+        <button className="enviar-fichero">Enviar fichero</button>
 
         {error ? <p>{error}</p> : null}
         {loading ? <p>Cargando fichero...</p> : null}
       </form>
       {sendMessage && <p>{sendMessage}</p>}
-    </>
+    </section>
   );
 };

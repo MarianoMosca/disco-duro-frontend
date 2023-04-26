@@ -1,3 +1,8 @@
 export const Footer = () => {
-  return <footer className="footer">(c) Juanpe, Mariano, Juan</footer>;
+  return (
+    <footer className="main-footer">
+      {" "}
+      ©️ Juan Fernández, Juan Pedro Gómez, Mariano Mosca 2023
+    </footer>
+  );
 };

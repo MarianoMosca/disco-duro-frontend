@@ -7,6 +7,7 @@ export const Auth = () => {
   const { user, logout } = useContext(AuthContext);
 
   return user ? (
+<<<<<<< HEAD
     <>
       <section>
         Conectado como
@@ -15,5 +16,14 @@ export const Auth = () => {
         <button onClick={() => logout()}> Salir</button>
       </section>
     </>
+=======
+    <section className="auth">
+      Conectado como
+      <Link to="/user">
+        <p> {user.name}</p>
+      </Link>
+      <button onClick={() => logout()}> Salir</button>
+    </section>
+>>>>>>> mariano
   ) : null;
 };

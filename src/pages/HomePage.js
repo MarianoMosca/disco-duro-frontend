@@ -9,6 +9,8 @@ import { NewFolder } from "../components/NewFolder";
 import { FolderList } from "../components/FolderList";
 import useFolders from "../hooks/useFolders";
 
+import "./css/homepage/homepage.css";
+
 export const HomePage = () => {
   const { user } = useContext(AuthContext);
   const { files, loading, error, addFile, removeFile } = useFiles();
@@ -18,17 +20,17 @@ export const HomePage = () => {
   if (error) return <ErrorMessage message={error} />;
 
   return (
-    <>
+    <section className="homePage">
+      <h1 className="ficheros-h1">Mis ficheros: </h1>
+      <br></br>
       {user ? <NewFile addFile={addFile} /> : null}
-
-      <h1 className="listaFicheros">Mis ficheros </h1>
 
       <FileList files={files} removeFile={removeFile} />
 
-      <h1 className="listaCarpetas">Mis carpetas </h1>
+      <h2 className="carpetas-h2">Mis carpetas: </h2>
       {user ? <NewFolder addFolder={addFolder} /> : null}
 
       <FolderList folders={folders} removeFolder={removeFolder} />
-    </>
+    </section>
   );
 };

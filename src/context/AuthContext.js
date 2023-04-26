@@ -41,11 +41,8 @@ export const AuthContextProviderComponent = ({ children }) => {
       avatar: filename,
     });
   };
-  const updateUser = ({ name, email }) => {
-    setUser({
-      name,
-      email,
-    });
+  const updateUser = (user) => {
+    setUser(user);
   };
 
   return (
