@@ -21,16 +21,13 @@ export const NewFolder = ({ addFolder }) => {
   };
   return (
     <section className="carpetas">
-      <br></br>
-
-      <h1>Añadir una carpeta :</h1>
       <form onSubmit={handleForm}>
-        <label htmlFor="name">Nombre</label>
+        <label htmlFor="name">Nombre :</label>
         <br></br>
 
         <input type="name" name="name" id="name" required />
 
-        <label htmlFor="file">Fichero (opcional) </label>
+        <label htmlFor="file">Fichero : (opcional) </label>
         <br></br>
 
         <input type="file" id="file" name="file" />

@@ -46,8 +46,9 @@ export const File = ({ file, removeFile }) => {
   };
 
   return (
-    <section className="file">
-      <p className="nombre-fichero">Nombre del archivo: {file.originalName}.</p>
+    <section className="item">
+      <p className="label">Nombre del archivo: </p>
+      <p className="nombre"> {file.originalName}</p>
 
       <p className="created-at">
         Subido el {new Date(file.createdAt).toISOString()}
@@ -74,7 +75,7 @@ export const File = ({ file, removeFile }) => {
                 if (window.confirm("¿Estás seguro?")) deleteFile(file.id);
               }}
             >
-              Borrar fichero
+              Borrar
             </button>
             {error ? <p>{error}</p> : null}
             {isDownloaded ? <p>Archivo descargado correctamente</p> : null}
@@ -89,7 +90,7 @@ export const File = ({ file, removeFile }) => {
                 if (window.confirm("¿Estás seguro?")) downloadFile(file.id);
               }}
             >
-              Descargar fichero
+              Descargar
             </button>
             {error ? <p>{error}</p> : null}
           </article>

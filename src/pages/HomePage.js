@@ -36,6 +36,8 @@ export const HomePage = () => {
       <FileList files={files} removeFile={removeFile} />
 
       <h2 className="carpetas-h2">Mis carpetas: </h2>
+      <br></br>
+      <h3 className="carpetas-h3">Añadir una carpeta :</h3>
       {user ? <NewFolder addFolder={addFolder} /> : null}
 
       <FolderList folders={folders} />

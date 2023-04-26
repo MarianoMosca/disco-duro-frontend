@@ -14,7 +14,7 @@ export const UserPage = () => {
 
   return (
     <div className="userPage">
-      <h1>Mi perfil</h1>
+      <h1>Mi perfil :</h1>
       <Profile user={user} />
       <EditUser />
       {user ? <Avatar user={user} /> : null}

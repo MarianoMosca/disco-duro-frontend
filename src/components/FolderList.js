@@ -8,12 +8,6 @@ export const FolderList = ({ folders }) => {
         return (
           <li key={folder.id}>
             <Folder key={folder.id} folder={folder} />
-
-            <Link to={`/folders/${folder.id}`}>
-              <button className="operaciones-ficheros">
-                operaciones con ficheros
-              </button>
-            </Link>
           </li>
         );
       })}
