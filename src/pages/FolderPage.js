@@ -15,14 +15,11 @@ export const FolderPage = () => {
   const { files, loading, error, addFile, removeFile } = useFiles(idFolder);
 
   const { folder } = useFolder(idFolder);
-  //const folderNames = folder.map((item) => item.name);
 
   const { user } = useContext(AuthContext);
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage message={error} />;
-
-  console.log(files);
 
   return (
     <section>
@@ -31,7 +28,6 @@ export const FolderPage = () => {
       {user ? <NewFile idFolder={idFolder} addFile={addFile} /> : null}
 
       <h1 className="listaFicheros">Mis ficheros </h1>
-      {/* <Refresh /> */}
       <FileListInFolder
         idFolder={idFolder}
         files={files}

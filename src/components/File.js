@@ -46,8 +46,9 @@ export const File = ({ file, removeFile }) => {
   };
 
   return (
-    <section className="file">
-      <p className="nombre-fichero">Nombre del archivo: {file.originalName}.</p>
+    <section className="item">
+      <p className="label">Nombre del archivo: </p>
+      <p className="nombre"> {file.originalName}</p>
 
       <p className="created-at">
         Subido el {new Date(file.createdAt).toISOString()}
@@ -67,21 +68,6 @@ export const File = ({ file, removeFile }) => {
 
       <section className="contenedor-botones">
         {user && user.id === file.idUser ? (
-          <article className="borrar-fichero">
-            <button
-              className="boton-borrar"
-              onClick={() => {
-                if (window.confirm("¿Estás seguro?")) deleteFile(file.id);
-              }}
-            >
-              Borrar fichero
-            </button>
-            {error ? <p>{error}</p> : null}
-            {isDownloaded ? <p>Archivo descargado correctamente</p> : null}
-          </article>
-        ) : null}
-
-        {user && user.id === file.idUser ? (
           <article className="descargar-fichero">
             <button
               className="boton-descarga"
@@ -89,7 +75,21 @@ export const File = ({ file, removeFile }) => {
                 if (window.confirm("¿Estás seguro?")) downloadFile(file.id);
               }}
             >
-              Descargar fichero
+              Descargar
+            </button>
+            {error ? <p>{error}</p> : null}
+            {isDownloaded ? <p>Archivo descargado correctamente</p> : null}
+          </article>
+        ) : null}
+        {user && user.id === file.idUser ? (
+          <article className="borrar-fichero">
+            <button
+              className="boton-borrar"
+              onClick={() => {
+                if (window.confirm("¿Estás seguro?")) deleteFile(file.id);
+              }}
+            >
+              Borrar
             </button>
             {error ? <p>{error}</p> : null}
           </article>

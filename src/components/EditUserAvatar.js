@@ -21,15 +21,17 @@ export const EditUserAvatar = () => {
       updateAvatar(response.filename);
     } catch (error) {
       alert(error.message);
-      //cambiar esto por algo que aparezca en pantalla
     }
   };
   return (
     <section className="avatar">
       <form>
-        <label htmlFor="file"></label>
         <section className="botones-avatar-archivo">
+          <label className="subir-archivo-label" htmlFor="file">
+            Selecciona Avatar
+          </label>
           <input
+            id="file"
             className="subir-archivo"
             type="file"
             name="avatar"
