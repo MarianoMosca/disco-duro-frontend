@@ -1,7 +1,26 @@
+import { useContext, useState } from "react";
 import { MdFolderShared } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { deleteFolderService } from "../services";
+import { AuthContext } from "../context/AuthContext";
 
-export const Folder = ({ folder }) => {
+export const Folder = ({ folder, removeFolder }) => {
+  const { user, token } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const idUser = user.id;
+  const deleteFolder = async (id) => {
+    try {
+      await deleteFolderService({ id, idUser, token });
+
+      if (removeFolder) {
+        removeFolder(id);
+      } else {
+        Navigate("/homepage");
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
   return (
     <article className="item">
       <p className="label">Nombre de la carpeta:</p>
@@ -27,6 +46,21 @@ export const Folder = ({ folder }) => {
           operaciones con ficheros
         </button>
       </Link>
+      {user && user.id === folder.idUser ? (
+        <section>
+          <button
+            onClick={() => {
+              if (
+                window.confirm("La carpeta debe estar vacía ¿Quieres seguir?")
+              )
+                deleteFolder(folder.id);
+            }}
+          >
+            Borrar carpeta
+          </button>
+          {error ? <p>{error}</p> : null}
+        </section>
+      ) : null}
     </article>
   );
 };

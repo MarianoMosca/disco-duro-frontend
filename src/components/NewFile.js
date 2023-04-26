@@ -9,7 +9,6 @@ export const NewFile = ({ addFile, idFolder }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [sendMessage, setSendMessage] = useState("");
-  // const navigate = useNavigate();
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -35,8 +34,6 @@ export const NewFile = ({ addFile, idFolder }) => {
       }, 3000);
 
       e.target.reset();
-      // window.location.reload();
-      // navigate("/homepage");
     } catch (error) {
       setError(error.message);
     } finally {
@@ -45,7 +42,6 @@ export const NewFile = ({ addFile, idFolder }) => {
   };
   return (
     <section className="new-file">
-      {/* <h1>Añadir un fichero :</h1> */}
       <form onSubmit={handleForm}>
         <label htmlFor="file">Añade un fichero :</label>
         <br></br>
@@ -57,17 +53,6 @@ export const NewFile = ({ addFile, idFolder }) => {
           onChange={(e) => setFile(e.target.files[0])}
         />
 
-        {/* {file ? (
-            <figure>
-              <img
-                src={URL.createObjectURL(file)} //imagen previa del fichero
-                style={{ width: "100px" }}
-                alt="Preview"
-              />
-            </figure>
-          ) : null} */}
-
-        {/* </fieldset> */}
         <button className="enviar-fichero">Enviar fichero</button>
 
         {error ? <p>{error}</p> : null}

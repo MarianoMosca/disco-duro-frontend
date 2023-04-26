@@ -6,6 +6,7 @@ export const NewFolder = ({ addFolder }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { token } = useContext(AuthContext);
+  const [sendMessage, setSendMessage] = useState("");
   const handleForm = async (e) => {
     e.preventDefault();
     try {
@@ -13,6 +14,10 @@ export const NewFolder = ({ addFolder }) => {
       const data = new FormData(e.target);
       const folder = await sendFolderService({ data, token });
       addFolder(folder);
+      setSendMessage("Carpeta creada correctamente");
+      setTimeout(() => {
+        setSendMessage(null);
+      }, 3000);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -42,6 +47,7 @@ export const NewFolder = ({ addFolder }) => {
         {loading ? <p>Cargando carpeta...</p> : null}
         {error ? <p>{error}</p> : null}
       </form>
+      {sendMessage && <p>{sendMessage}</p>}
     </section>
   );
 };

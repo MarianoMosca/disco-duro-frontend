@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { editUserService, getAllFilesService } from "../services";
+import { editUserService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
 const useUser = (id) => {
@@ -14,7 +14,7 @@ const useUser = (id) => {
       try {
         setLoading(true);
         const data = await editUserService({ name, email, token });
-        //console.log(data);
+
         setName(name);
         setEmail(email);
       } catch (error) {
