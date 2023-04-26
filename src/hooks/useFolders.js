@@ -32,7 +32,6 @@ export const useFolders = (id) => {
   const removeFolder = (id) => {
     setFolders(folders.filter((folder) => folder.id !== id));
   };
-
   return { folders, loading, error, addFolder, removeFolder };
 };
 export default useFolders;

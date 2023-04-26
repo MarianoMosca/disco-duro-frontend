@@ -21,13 +21,12 @@ export const HomePage = () => {
 
   return (
     <section className="homePage">
-      <h1 className="ficheros-h1">Mis ficheros: </h1>
       <br></br>
       {user ? <NewFile addFile={addFile} /> : null}
 
       <FileList files={files} removeFile={removeFile} />
 
-      <h2 className="carpetas-h2">Mis carpetas: </h2>
+      <br></br>
       {user ? <NewFolder addFolder={addFolder} /> : null}
 
       <FolderList folders={folders} removeFolder={removeFolder} />

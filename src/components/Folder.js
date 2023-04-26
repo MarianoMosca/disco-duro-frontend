@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { MdFolderShared } from "react-icons/md";
 import { AuthContext } from "../context/AuthContext";
 import { deleteFolderService } from "../services";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 export const Folder = ({ folder, removeFolder }) => {
   const { user, token } = useContext(AuthContext);
@@ -39,16 +39,28 @@ export const Folder = ({ folder, removeFolder }) => {
       />
       {user && user.id === folder.idUser ? (
         <section>
-          <button
-            onClick={() => {
-              if (
-                window.confirm("La carpeta debe estar vacía ¿Quieres seguir?")
-              )
-                deleteFolder(folder.id);
-            }}
-          >
-            Borrar carpeta
-          </button>
+          <section>
+            <article>
+              <button
+                onClick={() => {
+                  if (
+                    window.confirm(
+                      "La carpeta debe estar vacía ¿Quieres seguir?"
+                    )
+                  )
+                    deleteFolder(folder.id);
+                }}
+              >
+                Borrar carpeta
+              </button>
+            </article>
+            <article>
+              <Link to={`/folders/${folder.id}`}>
+                <button>Acceder</button>
+              </Link>
+            </article>
+          </section>
+
           {error ? <p>{error}</p> : null}
         </section>
       ) : null}

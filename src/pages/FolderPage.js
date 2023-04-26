@@ -27,7 +27,6 @@ export const FolderPage = () => {
       {user ? <NewFile idFolder={idFolder} addFile={addFile} /> : null}
 
       <h1 className="listaFicheros">Mis ficheros </h1>
-
       <FileListInFolder
         idFolder={idFolder}
         files={files}
