@@ -29,15 +29,15 @@ export const HomePage = () => {
   //console.log(files); //no carga nada
   return (
     <section className="homePage">
-      <h1 className="ficheros-h1">Mis ficheros: </h1>
+      {/* <h1 className="ficheros-h1">Mis ficheros: </h1> */}
       <br></br>
       {user ? <NewFile addFile={addFile} /> : null}
 
       <FileList files={files} removeFile={removeFile} />
 
-      <h2 className="carpetas-h2">Mis carpetas: </h2>
+      {/* <h2 className="carpetas-h2">Mis carpetas: </h2> */}
       <br></br>
-      <h3 className="carpetas-h3">Añadir una carpeta :</h3>
+      {/* <h3 className="carpetas-h3">Añadir una carpeta :</h3> */}
       {user ? <NewFolder addFolder={addFolder} /> : null}
 
       <FolderList folders={folders} />
