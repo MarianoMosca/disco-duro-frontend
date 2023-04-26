@@ -7,7 +7,6 @@ export const Header = () => {
   const { token } = useContext(AuthContext);
   return (
     <header className="main-header">
-      <h1></h1>
       <nav>
         <ul>
           {!token ? (
