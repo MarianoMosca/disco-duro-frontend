@@ -28,7 +28,7 @@ export const EditUserAvatar = () => {
       <form>
         <section className="botones-avatar-archivo">
           <label className="subir-archivo-label" htmlFor="file">
-            Selecciona Avatar
+            <p className="seleccion-avatar">Selecciona Avatar</p>
           </label>
           <input
             id="file"

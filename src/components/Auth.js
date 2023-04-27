@@ -6,7 +6,7 @@ export const Auth = () => {
   const { user, logout } = useContext(AuthContext);
 
   return user ? (
-    <section className="auth">
+    <section className="auth" title="Tus datos">
       Conectado como
       <Link to="/user">
         <p> {user.name}</p>
