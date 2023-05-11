@@ -123,7 +123,8 @@ body {
 }
 
 img[alt] {
-  padding: 20px;
+  padding: 23px;
+  font-size: 0.8rem;
 }
 
 .avatar {
